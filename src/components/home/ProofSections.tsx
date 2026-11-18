@@ -18,7 +18,7 @@ export function PartnersStrip() {
             <Reveal as="li" key={p.name} delay={i * 70}>
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-ink shadow-soft transition-transform hover:-translate-y-0.5">
                 {p.logo ? (
-                  <img src={p.logo} alt="" aria-hidden="true" width={68} height={68} className="size-5 object-contain" />
+                  <img src={p.logo} alt="" aria-hidden="true" className="h-5 w-auto max-w-8 object-contain" />
                 ) : (
                   <BadgeCheck className="size-4 text-violet" aria-hidden="true" />
                 )}{" "}

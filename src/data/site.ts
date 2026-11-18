@@ -41,10 +41,10 @@ export const stats = [
 
 /** Parceiros e ferramentas. `logo` é opcional: sem logo, aparece o selo padrão. */
 export const partners: { name: string; logo?: string }[] = [
-  { name: "RD Station Partner" },
+  { name: "RD Station Partner", logo: "/brand/rdstation-icon.png" },
   { name: "mLabs", logo: "/brand/mlabs-icon.png" },
-  { name: "Google Ads" },
-  { name: "Meta Business Partner" },
+  { name: "Google Ads", logo: "/brand/googleads-icon.png" },
+  { name: "Meta Business Partner", logo: "/brand/meta-icon.png" },
 ];
 
 export const rotatingWords = ["RESULTADOS.", "CONEXÕES.", "VENDAS.", "CRESCIMENTO.", "VALOR."];
