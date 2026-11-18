@@ -23,7 +23,7 @@ function NotFoundComponent() {
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-ink-pattern px-4">
       <div className="max-w-lg text-center">
-        <EllomMark className="mx-auto h-20 w-20" spin />
+        <EllomMark tone="light" className="mx-auto h-20 w-20" spin />
         <p className="eyebrow eyebrow-on-ink mt-8">Erro 404</p>
         <h1 className="display-lg mt-3">Essa página saiu da rota.</h1>
         <p className="lead mt-4 text-ink-foreground/80">
@@ -52,7 +52,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-ink-pattern px-4">
       <div className="max-w-md text-center">
-        <EllomMark className="mx-auto h-16 w-16" />
+        <EllomMark tone="light" className="mx-auto h-16 w-16" />
         <h1 className="display-md mt-6">Esta página não carregou</h1>
         <p className="mt-3 text-ink-foreground/80">Algo deu errado do nosso lado. Tente novamente ou fale com a gente pelo WhatsApp.</p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
@@ -102,6 +102,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "apple-touch-icon", href: "/brand/apple-touch-icon.png" },
     ],
     scripts: [{ children: "document.documentElement.classList.add('js')" }],
   }),

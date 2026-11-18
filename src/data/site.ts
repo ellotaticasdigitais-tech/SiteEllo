@@ -39,8 +39,13 @@ export const stats = [
   { value: "+R$500 mil", label: "geridos em anúncios (Meta + Google)" },
 ];
 
-/** Partners/certifications listed in the wireframe — to validate before publishing. */
-export const partners = ["RD Station Partner", "Kommo Partner", "Google Ads", "Meta Business Partner"];
+/** Parceiros e ferramentas. `logo` é opcional: sem logo, aparece o selo padrão. */
+export const partners: { name: string; logo?: string }[] = [
+  { name: "RD Station Partner" },
+  { name: "mLabs", logo: "/brand/mlabs-icon.png" },
+  { name: "Google Ads" },
+  { name: "Meta Business Partner" },
+];
 
 export const rotatingWords = ["RESULTADOS.", "CONEXÕES.", "VENDAS.", "CRESCIMENTO.", "VALOR."];
 

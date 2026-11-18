@@ -12,12 +12,17 @@ export function PartnersStrip() {
   return (
     <section aria-labelledby="parceiros" className="border-b border-border bg-paper py-10">
       <div className="container-site flex flex-col items-center gap-6 lg:flex-row lg:justify-between">
-        <h2 id="parceiros" className="eyebrow shrink-0 font-sans">Parceiros e certificações</h2>
+        <h2 id="parceiros" className="eyebrow shrink-0 font-sans">Parceiros e ferramentas</h2>
         <ul className="flex flex-wrap justify-center gap-3">
           {partners.map((p, i) => (
-            <Reveal as="li" key={p} delay={i * 70}>
+            <Reveal as="li" key={p.name} delay={i * 70}>
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-ink shadow-soft transition-transform hover:-translate-y-0.5">
-                <BadgeCheck className="size-4 text-violet" aria-hidden="true" /> {p}
+                {p.logo ? (
+                  <img src={p.logo} alt="" aria-hidden="true" width={68} height={68} className="size-5 object-contain" />
+                ) : (
+                  <BadgeCheck className="size-4 text-violet" aria-hidden="true" />
+                )}{" "}
+                {p.name}
               </span>
             </Reveal>
           ))}

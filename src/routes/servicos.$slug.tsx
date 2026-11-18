@@ -103,8 +103,13 @@ function ServicePage() {
         <section aria-label="Parceiros" className="border-b border-border bg-paper py-8">
           <ul className="container-site flex flex-wrap justify-center gap-3">
             {partners.map((p) => (
-              <li key={p} className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold">
-                <BadgeCheck className="size-4 text-violet" aria-hidden="true" /> {p}
+              <li key={p.name} className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold">
+                {p.logo ? (
+                <img src={p.logo} alt="" aria-hidden="true" width={68} height={68} className="size-5 object-contain" />
+              ) : (
+                <BadgeCheck className="size-4 text-violet" aria-hidden="true" />
+              )}{" "}
+              {p.name}
               </li>
             ))}
           </ul>

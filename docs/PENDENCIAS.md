@@ -10,7 +10,7 @@ Itens que dependem de material ou aprovação da Ello. Nada abaixo foi inventado
 
 ## Conteúdo a validar
 - [ ] Indicadores: "4 anos", "+13 anos combinados", "+R$500 mil geridos" (`src/data/site.ts`).
-- [ ] Parceiros/certificações: RD Station Partner, Kommo Partner, Google Ads, Meta Business Partner.
+- [ ] Parceiros/ferramentas: RD Station Partner, mLabs, Google Ads, Meta Business Partner.
 - [ ] Autorização de uso das marcas Blueberry Alimentos, Ecopietra e Aghuia (faixa de logos e cases) + arquivos de logo.
 - [ ] Cases: contexto, desafio, estratégia, serviços, resultados com fonte e período, peças reais e depoimento. Hoje os 3 cases estão como rascunho (noindex). Para publicar, preencher em `src/data/cases.ts` e mudar `status` para `"published"`.
 - [ ] Clientes aguardando autorização: BM Estrutural, EXON, Mercadão Central, Rede Alvorada, ERA.

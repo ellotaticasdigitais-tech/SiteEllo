@@ -21,7 +21,7 @@ export function Founders() {
           <div className="relative aspect-[5/4] overflow-hidden rounded-[2.5rem] bg-ink-pattern shadow-lift">
             <div className="absolute inset-0 grid place-items-center p-8 text-center">
               <div>
-                <EllomMark className="mx-auto h-20 w-20" spin />
+                <EllomMark tone="light" className="mx-auto h-20 w-20" spin />
                 <p className="mt-6 font-display text-3xl font-extrabold">Melina & Lucas</p>
                 <p className="mt-2 text-sm text-ink-foreground/70">Vídeo e fotos reais dos fundadores em produção</p>
               </div>

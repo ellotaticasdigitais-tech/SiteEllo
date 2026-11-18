@@ -92,7 +92,7 @@ function CaseScreen({ c, active }: { c: SuccessCase; active: boolean }) {
     >
       <div className="flex items-center justify-between">
         <span className="rounded-full bg-ink-foreground/10 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-widest text-ink-muted sm:text-xs">{c.segment}</span>
-        <EllomMark className="h-8 w-8" />
+        <EllomMark tone="light" className="h-8 w-8" />
       </div>
       <div>
         <p className="font-display text-3xl font-extrabold leading-none sm:text-6xl">{c.client}</p>
