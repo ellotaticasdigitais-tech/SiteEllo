@@ -1,0 +1,480 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Ello Táticas Digitais — design system.
+ * Colors extracted from the approved wireframe (manual de identidade pending):
+ * ink #2A0C53, plum #561384, violet #5F29BF, yellow #FDC501, amber #F8A502, cream #F2E8D6.
+ * All colors MUST use oklch. Register new tokens in @theme inline.
+ */
+
+@theme inline {
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 14px);
+  --radius-4xl: calc(var(--radius) + 22px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-ink: var(--ink);
+  --color-ink-deep: var(--ink-deep);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-ink-muted: var(--ink-muted);
+  --color-plum: var(--plum);
+  --color-violet: var(--violet);
+  --color-sun: var(--sun);
+  --color-amber: var(--amber);
+  --color-cream: var(--cream);
+  --color-paper: var(--paper);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --animate-marquee: marquee var(--marquee-duration, 38s) linear infinite;
+  --animate-float-slow: float-slow 18s ease-in-out infinite;
+  --animate-float-slower: float-slow 26s ease-in-out infinite reverse;
+  --animate-spin-slow: spin 22s linear infinite;
+  --animate-page-in: page-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Brand palette */
+  --ink: oklch(0.254 0.117 295.9);
+  --ink-deep: oklch(0.194 0.087 296.5);
+  --ink-foreground: oklch(0.984 0.016 82.8);
+  --ink-muted: oklch(0.81 0.058 304.4);
+  --plum: oklch(0.367 0.171 305.9);
+  --violet: oklch(0.452 0.213 291.8);
+  --sun: oklch(0.85 0.174 87.8);
+  --amber: oklch(0.784 0.167 73.1);
+  --cream: oklch(0.934 0.026 82.4);
+  --paper: oklch(0.984 0.016 82.8);
+  --whatsapp: oklch(0.761 0.201 149.7);
+  --whatsapp-foreground: oklch(0.25 0.07 150);
+
+  /* Semantic */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--ink);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--ink);
+  --primary: var(--violet);
+  --primary-foreground: oklch(0.99 0.01 85);
+  --secondary: var(--cream);
+  --secondary-foreground: var(--ink);
+  --muted: var(--cream);
+  --muted-foreground: oklch(0.42 0.085 305);
+  --accent: var(--sun);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.56 0.21 25);
+  --destructive-foreground: oklch(0.99 0.01 85);
+  --success: oklch(0.52 0.14 150);
+  --border: oklch(0.906 0.029 84.6);
+  --input: oklch(0.88 0.03 84);
+  --ring: var(--violet);
+
+  --gradient-brand: linear-gradient(115deg, var(--violet) 0%, var(--plum) 38%, var(--amber) 78%, var(--sun) 100%);
+  --gradient-sun: linear-gradient(120deg, var(--amber), var(--sun));
+  --gradient-ink: radial-gradient(120% 90% at 15% 0%, var(--plum) 0%, var(--ink) 45%, var(--ink-deep) 100%);
+  --shadow-soft: 0 18px 50px -24px color-mix(in oklab, var(--ink) 45%, transparent);
+  --shadow-lift: 0 30px 70px -30px color-mix(in oklab, var(--ink) 60%, transparent);
+  --shadow-sun: 0 14px 40px -12px color-mix(in oklab, var(--amber) 70%, transparent);
+
+  --pattern-purple: url("/__l5e/assets-v1/ef8f4e59-f0c0-4ada-baa0-050597408179/pattern-purple.jpg");
+  --pattern-yellow: url("/__l5e/assets-v1/d99ca290-fbf4-4c41-95b8-e631901973a6/pattern-yellow.jpg");
+
+  --chart-1: var(--violet);
+  --chart-2: var(--sun);
+  --chart-3: var(--plum);
+  --chart-4: var(--amber);
+  --chart-5: var(--ink);
+  --sidebar: var(--paper);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--violet);
+  --sidebar-primary-foreground: var(--paper);
+  --sidebar-accent: var(--cream);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--violet);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01";
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--sun);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: var(--sun);
+    color: var(--ink);
+  }
+}
+
+/* ---------- Layout & type utilities ---------- */
+
+@utility container-site {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: clamp(1.15rem, 4vw, 2.5rem);
+}
+
+@utility section-y {
+  padding-block: clamp(4.5rem, 9vw, 8rem);
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--plum);
+}
+
+@utility eyebrow-on-ink {
+  color: var(--sun);
+}
+
+@utility display-xl {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 7.2vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+@utility display-lg {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.1rem, 4.8vw, 3.9rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+@utility display-md {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+@utility lead {
+  font-size: clamp(1.02rem, 1.4vw, 1.18rem);
+  line-height: 1.65;
+}
+
+@utility text-gradient-brand {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility text-gradient-sun {
+  background: var(--gradient-sun);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-ink-gradient {
+  background: var(--gradient-ink);
+  color: var(--ink-foreground);
+}
+
+@utility bg-brand-gradient {
+  background: var(--gradient-brand);
+}
+
+@utility bg-sun-gradient {
+  background: var(--gradient-sun);
+}
+
+/* Official Ello purple pattern with deep overlay for legibility */
+@utility bg-ink-pattern {
+  background-color: var(--ink);
+  background-image:
+    linear-gradient(180deg, color-mix(in oklab, var(--ink-deep) 72%, transparent), color-mix(in oklab, var(--ink) 88%, transparent)),
+    var(--pattern-purple);
+  background-size: auto, 520px auto;
+  background-repeat: repeat;
+  color: var(--ink-foreground);
+}
+
+@utility bg-sun-pattern {
+  background-color: var(--sun);
+  background-image: var(--pattern-yellow);
+  background-size: 480px auto;
+  background-repeat: repeat;
+  color: var(--ink);
+}
+
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+@utility shadow-lift {
+  box-shadow: var(--shadow-lift);
+}
+
+@utility shadow-sun {
+  box-shadow: var(--shadow-sun);
+}
+
+@utility grain {
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.08;
+    background-image: radial-gradient(color-mix(in oklab, var(--ink) 60%, transparent) 0.6px, transparent 0.8px);
+    background-size: 5px 5px;
+  }
+}
+
+/* Organic blurred blobs */
+@utility blob {
+  position: absolute;
+  border-radius: 48% 52% 60% 40% / 45% 40% 60% 55%;
+  filter: blur(60px);
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ---------- Animations ---------- */
+
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translate3d(4%, -6%, 0) rotate(8deg) scale(1.06);
+  }
+  66% {
+    transform: translate3d(-5%, 4%, 0) rotate(-6deg) scale(0.96);
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes letter-glow {
+  0%,
+  100% {
+    color: var(--sun);
+    text-shadow: none;
+    transform: translateY(0);
+  }
+  50% {
+    color: var(--amber);
+    text-shadow: 0 0 24px color-mix(in oklab, var(--sun) 70%, transparent);
+    transform: translateY(-0.06em);
+  }
+}
+
+/* Reveal on scroll (only hidden when JS is active, so content stays in HTML) */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.js [data-reveal="fade"] {
+  transform: none;
+}
+.js [data-reveal="scale"] {
+  transform: scale(0.94);
+}
+.js [data-reveal="left"] {
+  transform: translate3d(-36px, 0, 0);
+}
+.js [data-reveal="right"] {
+  transform: translate3d(36px, 0, 0);
+}
+.js [data-reveal][data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Growing divider line */
+.js [data-line] {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.js [data-line][data-visible="true"] {
+  transform: scaleX(1);
+}
+
+/* Vertical word roulette */
+.roulette {
+  display: inline-grid;
+  vertical-align: bottom;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.roulette > span {
+  grid-area: 1 / 1;
+  transition:
+    transform 0.7s cubic-bezier(0.7, 0, 0.2, 1),
+    opacity 0.5s ease;
+  transform: translateY(105%);
+  opacity: 0;
+}
+.roulette > span[data-state="active"] {
+  transform: translateY(0);
+  opacity: 1;
+}
+.roulette > span[data-state="past"] {
+  transform: translateY(-105%);
+  opacity: 0;
+}
+
+.glow-letter {
+  display: inline-block;
+  color: var(--sun);
+  animation: letter-glow 3.6s ease-in-out infinite;
+  animation-delay: var(--glow-delay, 0s);
+}
+
+.page-transition {
+  animation: var(--animate-page-in);
+}
+
+/* Interactive tilt card */
+.tilt {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0));
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+  transform-style: preserve-3d;
+}
+
+.marquee-track:hover,
+.marquee-track[data-paused="true"] {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js [data-reveal],
+  .js [data-line] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .roulette > span:not([data-state="active"]) {
+    display: none;
+  }
+}
