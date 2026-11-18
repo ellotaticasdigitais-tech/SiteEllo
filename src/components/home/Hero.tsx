@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowRight, Play } from "lucide-react";
 
-import bulb from "@/assets/bulb.webp.asset.json";
 import sparkles from "@/assets/sparkles.webp.asset.json";
 import { BlurBlobs, Magnetic, Reveal, RotatingWord } from "@/components/animations/motion";
 import { EllomMark } from "@/components/brand/Logo";
@@ -11,6 +10,9 @@ import { track } from "@/lib/analytics";
 
 /** Real team video. Set src/poster when the Ello team delivers the file (public/videos). */
 const heroVideo: { src?: string; poster?: string } = {};
+
+/** Vídeo de apresentação publicado no Instagram. */
+const heroVideoUrl = "https://www.instagram.com/reel/DcbCGgsx-l3/";
 
 export function Hero() {
   return (
@@ -112,20 +114,37 @@ function HeroVideo() {
     );
   }
   return (
-    <figure className="relative">
-      <EllomMark className="absolute -left-10 -top-10 h-28 w-28 opacity-90" spin />
-      <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-sun-pattern shadow-lift">
-        <img src={bulb.url} alt="Ilustração de lâmpada com filamento em forma de 'ell', símbolo de ideias da Ello" width={736} height={736} className="absolute inset-x-0 top-6 mx-auto w-[85%]" />
-        <div className="absolute inset-x-4 bottom-4 flex items-center gap-4 rounded-3xl bg-ink/90 p-4 text-ink-foreground backdrop-blur">
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-sun text-ink">
-            <Play className="size-5 fill-current" aria-hidden="true" />
-          </span>
-          <figcaption className="min-w-0 text-sm leading-snug">
-            <strong className="block font-display text-base">Melina e Lucas apresentam a Ello</strong>
-            <span className="text-ink-foreground/70">Vídeo de apresentação em produção</span>
-          </figcaption>
-        </div>
+    <figure className="relative mt-8 lg:mt-0">
+      <EllomMark className="absolute -left-10 -top-10 z-0 h-28 w-28 opacity-90" spin />
+      <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-[radial-gradient(120%_90%_at_80%_10%,var(--sun)_0%,var(--amber)_38%,var(--plum)_78%,var(--violet)_100%)] shadow-lift">
+        <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(55%_45%_at_50%_42%,rgb(255_255_255/0.35),transparent_70%)]" />
       </div>
+      {/* Luma sai pelo topo do cartão, mas fica cortada no fundo arredondado */}
+      <div className="pointer-events-none absolute inset-x-0 -top-[10%] bottom-0 z-10 overflow-hidden rounded-b-[2.5rem]">
+        <img
+          src="/brand/luma.webp"
+          alt="Luma, a personagem da Ello, de braços cruzados e olhando para cima"
+          width={464}
+          height={1100}
+          fetchPriority="high"
+          className="absolute bottom-0 left-1/2 h-[98%] w-auto max-w-none -translate-x-1/2 drop-shadow-[0_24px_40px_rgb(20_8_40/0.45)]"
+        />
+      </div>
+      <a
+        href={heroVideoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => track("cta_click", { cta: "hero_video_instagram" })}
+        className="group absolute inset-x-4 bottom-4 z-20 flex items-center gap-4 rounded-3xl bg-ink/90 p-4 text-ink-foreground backdrop-blur transition-colors hover:bg-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sun"
+      >
+        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-sun text-ink transition-transform group-hover:scale-110">
+          <Play className="size-5 fill-current" aria-hidden="true" />
+        </span>
+        <span className="min-w-0 text-sm leading-snug">
+          <strong className="block font-display text-base">Melina e Lucas apresentam a Ello</strong>
+          <span className="text-ink-foreground/70">Assista no Instagram</span>
+        </span>
+      </a>
     </figure>
   );
 }
