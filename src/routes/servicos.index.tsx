@@ -1,9 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { FinalCta } from "@/components/home/FaqCta";
 import { DiagnosticSection } from "@/components/home/MethodSection";
-import { ServicesGrid, TechSection } from "@/components/home/OfferSections";
-import { PageHero, SiteShell } from "@/components/layout/SiteShell";
+import { PlansCards, ServicesGrid, TechSection } from "@/components/home/OfferSections";
+import { PageHero, SectionHeading, SiteShell } from "@/components/layout/SiteShell";
+import { Button } from "@/components/ui/button";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/servicos/")({
@@ -38,6 +39,25 @@ function ServicesHub() {
       </section>
       <TechSection />
       <DiagnosticSection />
+      <section aria-labelledby="planos-servicos" className="section-y bg-cream">
+        <div className="container-site">
+          <SectionHeading
+            eyebrow="Planos"
+            title={<span id="planos-servicos">Prefere tudo integrado? Escolha um plano</span>}
+            lead="Os serviços se combinam em três planos, com valores abertos e economia no semestral e no anual."
+            align="center"
+          />
+          <div className="mt-12">
+            <PlansCards compact />
+          </div>
+          <div className="mt-6 text-center">
+            <Button asChild variant="link">
+              <Link to="/planos">Comparar os planos em detalhe →</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <FinalCta />
     </SiteShell>
   );

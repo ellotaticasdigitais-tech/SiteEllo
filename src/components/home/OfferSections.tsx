@@ -1,12 +1,14 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Bot, Check, Clapperboard, Compass, Fingerprint, Megaphone, MonitorSmartphone, Palette, Share2, Workflow, Wrench } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, ArrowUpRight, BadgeCheck, Bot, Check, Clapperboard, Gift, MessageCircle, Rocket, Sparkles, TrendingUp, Compass, Fingerprint, Megaphone, MonitorSmartphone, Palette, Share2, Workflow, Wrench } from "lucide-react";
 
 import { Reveal, Tilt } from "@/components/animations/motion";
 import { SectionHeading } from "@/components/layout/SiteShell";
 import { Button } from "@/components/ui/button";
-import { planAddon, plans } from "@/data/plans";
+import { billingPeriods, formatBRL, periodSavings, planAddon, plans, type BillingPeriod, type PlanId } from "@/data/plans";
 import { coreServices } from "@/data/services";
 import { track } from "@/lib/analytics";
+import { whatsappLinkText } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 
 export const serviceIcons: Record<string, typeof Compass> = {
@@ -160,46 +162,163 @@ function KanbanMock() {
   );
 }
 
+const planIcons: Record<PlanId, typeof Compass> = {
+  performance: TrendingUp,
+  expansao: Rocket,
+  conexao: Sparkles,
+};
+
 export function PlansCards({ compact = false }: { compact?: boolean }) {
+  const [period, setPeriod] = useState<BillingPeriod>("mensal");
+  const periodInfo = billingPeriods.find((b) => b.id === period)!;
+
   return (
     <div>
-      <ul className="grid gap-6 lg:grid-cols-3">
-        {plans.map((p, i) => (
-          <Reveal as="li" key={p.id} delay={i * 100} className="h-full">
-            <article
+      <div className="flex justify-center">
+        <div role="group" aria-label="Forma de pagamento" className="inline-flex rounded-full border border-border bg-card p-1.5 shadow-soft">
+          {billingPeriods.map((b) => (
+            <button
+              key={b.id}
+              type="button"
+              aria-pressed={period === b.id}
+              onClick={() => {
+                setPeriod(b.id);
+                track("cta_click", { cta: `planos_periodo_${b.id}` });
+              }}
               className={cn(
-                "relative flex h-full flex-col rounded-[2rem] p-8 transition-transform duration-300 hover:-translate-y-1.5",
-                p.featured ? "bg-ink-pattern shadow-lift lg:-translate-y-4 lg:hover:-translate-y-6" : "border border-border bg-card shadow-soft",
+                "relative inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors sm:px-6",
+                period === b.id ? "bg-ink text-ink-foreground shadow-soft" : "text-muted-foreground hover:text-foreground",
               )}
             >
-              {p.badge && (
-                <span className="absolute -top-3 left-8 rounded-full bg-sun px-3 py-1 text-xs font-bold uppercase tracking-wider text-ink shadow-sun">{p.badge}</span>
+              {b.label}
+              {b.hint && (
+                <span className={cn("rounded-full px-2 py-0.5 text-[0.7rem] font-bold", period === b.id ? "bg-sun text-ink" : "bg-success/15 text-success")}>{b.hint}</span>
               )}
-              <h3 className="font-display text-2xl font-extrabold">{p.name}</h3>
-              <p className={cn("mt-3 text-sm leading-relaxed", p.featured ? "text-ink-foreground/80" : "text-muted-foreground")}>{p.summary}</p>
-              {!compact && (
-                <ul className="mt-6 space-y-2.5 text-sm">
-                  {p.items.map((it) => (
-                    <li key={it} className="flex gap-2.5">
-                      <Check className={cn("mt-0.5 size-4 shrink-0", p.featured ? "text-sun" : "text-violet")} aria-hidden="true" /> {it}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <ul className="mt-14 grid gap-6 lg:grid-cols-3 lg:items-stretch">
+        {plans.map((p, i) => {
+          const Icon = planIcons[p.id];
+          const price = p.prices?.[period];
+          const savings = periodSavings(p, period);
+          const items = compact ? p.items.slice(0, 4) : p.items;
+          const hidden = p.items.length - items.length;
+          const dark = Boolean(p.featured);
+          return (
+            <Reveal as="li" key={p.id} delay={i * 100} className="h-full">
+              <article
+                className={cn(
+                  "relative flex h-full flex-col rounded-[2rem] p-7 transition-transform duration-300 hover:-translate-y-1.5 sm:p-8",
+                  dark ? "bg-ink-pattern text-ink-foreground shadow-lift ring-2 ring-sun/70 lg:-translate-y-4 lg:hover:-translate-y-6" : "border border-border bg-card shadow-soft",
+                )}
+              >
+                {p.badge && (
+                  <span className="absolute -top-3 left-8 rounded-full bg-sun px-3 py-1 text-xs font-bold uppercase tracking-wider text-ink shadow-sun">{p.badge}</span>
+                )}
+
+                <div className="flex items-center gap-3">
+                  <span className={cn("grid h-12 w-12 shrink-0 place-items-center rounded-2xl", dark ? "bg-sun text-ink" : "bg-violet/10 text-violet")}>
+                    <Icon className="size-6" aria-hidden="true" />
+                  </span>
+                  <h3 className="font-display text-2xl font-extrabold leading-tight">{p.name}</h3>
+                </div>
+                <p className={cn("mt-4 text-sm leading-relaxed", dark ? "text-ink-foreground/80" : "text-muted-foreground")}>{p.tagline}</p>
+
+                {/* Preço */}
+                <div className={cn("mt-6 rounded-2xl p-5", dark ? "bg-ink-foreground/10" : "bg-cream")}>
+                  {price ? (
+                    <>
+                      <p className="flex flex-wrap items-baseline gap-x-1">
+                        <span className={cn("font-display text-4xl font-extrabold tracking-tight", dark ? "text-sun" : "text-plum")}>{formatBRL(price.monthly)}</span>
+                        <span className={cn("text-sm font-semibold", dark ? "text-ink-foreground/70" : "text-muted-foreground")}>/mês</span>
+                      </p>
+                      <p className={cn("mt-1 text-xs", dark ? "text-ink-foreground/70" : "text-muted-foreground")}>
+                        {periodInfo.id === "mensal" ? "Plano mensal" : `No plano ${periodInfo.label.toLowerCase()}`}
+                      </p>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {price.setup === 0 ? (
+                          <span className="inline-flex items-center gap-1 rounded-full bg-success/15 px-3 py-1 text-xs font-bold text-success">
+                            <Gift className="size-3.5" aria-hidden="true" /> Setup inicial gratuito
+                          </span>
+                        ) : (
+                          <span className={cn("rounded-full px-3 py-1 text-xs font-semibold", dark ? "bg-ink-foreground/10" : "bg-card")}>
+                            + setup inicial de {formatBRL(price.setup)}
+                          </span>
+                        )}
+                        {savings > 0 && (
+                          <span className="rounded-full bg-sun px-3 py-1 text-xs font-bold text-ink">
+                            Economia de {formatBRL(savings)} no {period === "anual" ? "ano" : "semestre"}
+                          </span>
+                        )}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <p className={cn("font-display text-3xl font-extrabold", dark ? "text-sun" : "text-plum")}>A consultar</p>
+                      <p className={cn("mt-2 text-sm leading-relaxed", dark ? "text-ink-foreground/75" : "text-muted-foreground")}>{p.customNote}</p>
+                    </>
+                  )}
+                </div>
+
+                {/* O que vem no plano */}
+                {p.includes && (
+                  <p className={cn("mt-6 inline-flex w-fit items-center gap-2 rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider", dark ? "bg-sun/15 text-sun" : "bg-violet/10 text-violet")}>
+                    <BadgeCheck className="size-4" aria-hidden="true" /> {p.includes}
+                  </p>
+                )}
+                <ul className={cn("space-y-3.5 text-sm", p.includes ? "mt-4" : "mt-6")}>
+                  {items.map((it) => (
+                    <li key={it.title} className="flex gap-3">
+                      <span className={cn("grid h-8 w-8 shrink-0 place-items-center rounded-xl", dark ? "bg-ink-foreground/10 text-sun" : "bg-sun/20 text-plum")}>
+                        <it.icon className="size-4" aria-hidden="true" />
+                      </span>
+                      <span className="leading-snug">
+                        <strong className="block font-semibold">{it.title}</strong>
+                        {it.detail && <span className={dark ? "text-ink-foreground/70" : "text-muted-foreground"}>{it.detail}</span>}
+                      </span>
                     </li>
                   ))}
                 </ul>
-              )}
-              <div className="mt-auto pt-8">
-                <p className={cn("mb-3 font-display text-lg font-bold", p.featured ? "text-sun" : "text-plum")}>Consultar investimento</p>
-                <Button asChild variant={p.featured ? "sun" : "ink"} className="w-full" size="lg">
-                  <Link to="/contato" search={{ plano: p.id }} onClick={() => track("plan_click", { plan: p.id })}>
-                    Quero este plano
+                {hidden > 0 && (
+                  <Link to="/planos" className={cn("mt-3 text-sm font-semibold underline-offset-4 hover:underline", dark ? "text-sun" : "text-violet")}>
+                    + {hidden} {hidden === 1 ? "item" : "itens"} no plano
                   </Link>
-                </Button>
-              </div>
-            </article>
-          </Reveal>
-        ))}
+                )}
+
+                {/* Botões */}
+                <div className="mt-auto space-y-2 pt-8">
+                  <Button asChild variant={dark ? "sun" : "ink"} className="w-full" size="lg">
+                    <Link to="/contato" search={{ plano: p.id, ...(p.prices ? { periodo: period } : {}) }} onClick={() => track("plan_click", { plan: p.id, period })}>
+                      {p.prices ? `Contratar o ${p.name}` : "Solicitar proposta"} <ArrowRight />
+                    </Link>
+                  </Button>
+                  <a
+                    href={whatsappLinkText(
+                      p.prices
+                        ? `Olá, Ello! Tenho interesse no ${p.name} (${periodInfo.label.toLowerCase()}). Podem me explicar como funciona?`
+                        : `Olá, Ello! Quero uma proposta personalizada do ${p.name}.`,
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => track("whatsapp_click", { location: "plano", plan: p.id })}
+                    className={cn(
+                      "flex w-full items-center justify-center gap-2 rounded-full py-2.5 text-sm font-semibold transition-colors",
+                      dark ? "text-ink-foreground/85 hover:bg-ink-foreground/10" : "text-foreground/75 hover:bg-cream",
+                    )}
+                  >
+                    <MessageCircle className="size-4" aria-hidden="true" /> Tirar dúvidas no WhatsApp
+                  </a>
+                </div>
+              </article>
+            </Reveal>
+          );
+        })}
       </ul>
       <Reveal>
-        <p className="mt-8 flex items-center justify-center gap-2 text-center text-sm font-semibold">
+        <p className="mt-10 flex items-center justify-center gap-2 text-center text-sm font-semibold">
           <Bot className="size-4 text-violet" aria-hidden="true" /> {planAddon}
         </p>
       </Reveal>

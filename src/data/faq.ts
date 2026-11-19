@@ -1,8 +1,8 @@
-/** Home FAQ — direct answers written for clarity (GEO). Commercial values are never quoted. */
+/** Home FAQ — direct answers written for clarity (GEO). Valores vêm da tabela de planos aprovada. */
 export const homeFaq = [
   {
     q: "Quanto custa contratar uma agência de marketing digital?",
-    a: "Depende do escopo, dos canais e do momento da empresa. Na Ello, o investimento é apresentado após um diagnóstico estratégico gratuito, no qual entendemos seu objetivo e indicamos o plano mais adequado — Ello Performance, Ello Expansão ou Ello Conexão — sem pacotes genéricos.",
+    a: "Na Ello, os planos começam em R$ 2.600/mês no Ello Performance (ou R$ 2.080/mês no plano anual, com setup gratuito) e R$ 4.950/mês no Ello Expansão (R$ 3.960/mês no anual). O Ello Conexão é personalizado e tem valor sob consulta. Antes de fechar, fazemos um diagnóstico estratégico gratuito para indicar o plano certo para o seu momento.",
   },
   {
     q: "Quanto tempo leva para ver resultado com tráfego pago?",
@@ -18,6 +18,6 @@ export const homeFaq = [
   },
   {
     q: "Qual a diferença entre os planos Performance, Expansão e Conexão?",
-    a: "O Ello Performance reúne tráfego pago, CRM, dashboard em tempo real e o Ello Lab de bônus. O Ello Expansão inclui tudo do Performance, mais redes sociais, captação mensal e análise de concorrência. O Ello Conexão é focado em inbound completo, automação e jornada do cliente ponta a ponta.",
+    a: "O Ello Performance reúne tráfego pago no Google e na Meta, criativos e captação para anúncios, CRM RD Station, dashboard em tempo real e o Ello Lab de bônus. O Ello Expansão inclui tudo do Performance, mais gestão de redes sociais, captação mensal para as redes e análise de concorrência. O Ello Conexão soma tudo do Expansão com inbound completo, automação, funis de nutrição e mapeamento da jornada do cliente.",
   },
 ];

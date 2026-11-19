@@ -14,7 +14,10 @@ import { breadcrumbLd, pageHead, professionalServiceLd } from "@/lib/seo";
 import { whatsappLink } from "@/lib/whatsapp";
 
 export const Route = createFileRoute("/contato")({
-  validateSearch: z.object({ plano: z.enum(["performance", "expansao", "conexao"]).optional() }),
+  validateSearch: z.object({
+    plano: z.enum(["performance", "expansao", "conexao"]).optional(),
+    periodo: z.enum(["mensal", "semestral", "anual"]).optional(),
+  }),
   head: () =>
     pageHead({
       title: "Contato — fale com a Ello Táticas Digitais",
@@ -26,7 +29,7 @@ export const Route = createFileRoute("/contato")({
 });
 
 function ContactPage() {
-  const { plano } = Route.useSearch();
+  const { plano, periodo } = Route.useSearch();
   const plan = plans.find((p) => p.id === plano);
   return (
     <SiteShell>
@@ -38,7 +41,11 @@ function ContactPage() {
             Vamos conversar sobre o seu <span className="text-sun">crescimento</span>?
           </>
         }
-        lead={plan ? `Você escolheu o ${plan.name}. Conte um pouco sobre sua empresa e retornamos com o investimento e os próximos passos.` : "Escolha o canal que preferir: formulário, WhatsApp ou e-mail."}
+        lead={
+          plan
+            ? `Você escolheu o ${plan.name}${periodo ? ` (${periodo})` : ""}. Conte um pouco sobre sua empresa e retornamos com a proposta e os próximos passos.`
+            : "Escolha o canal que preferir: formulário, WhatsApp ou e-mail."
+        }
         aside={<img src="/luma/luma-animada.webp" alt="" aria-hidden="true" width={643} height={900} className="mx-auto hidden w-48 drop-shadow-2xl lg:block" />}
       />
       <section className="section-y bg-paper">
@@ -47,7 +54,7 @@ function ContactPage() {
             <h2 className="display-md">Formulário comercial</h2>
             <p className="mt-2 text-muted-foreground">Quatro campos, menos de um minuto.</p>
             <div className="mt-8">
-              <ContactForm origin={plan ? `contato_plano_${plan.id}` : "contato"} />
+              <ContactForm origin={plan ? `contato_plano_${plan.id}${periodo ? `_${periodo}` : ""}` : "contato"} />
             </div>
           </Reveal>
           <div className="space-y-4">

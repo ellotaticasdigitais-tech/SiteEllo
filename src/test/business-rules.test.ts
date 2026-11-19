@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { cases } from "@/data/cases";
 import { blogPosts } from "@/data/content";
-import { plans } from "@/data/plans";
+import { periodSavings, plans } from "@/data/plans";
 import { coreServices } from "@/data/services";
 import { contatoSchema, diagnosticoSchema, labSchema, MIN_FILL_MS } from "@/lib/leads.schema";
 import { topicForPath, whatsappLink } from "@/lib/whatsapp";
@@ -57,9 +57,16 @@ describe("Regras de conteúdo", () => {
     expect(MIN_FILL_MS).toBe(2500);
   });
 
-  it("has the three approved plans and no prices", () => {
+  it("has the three approved plans with consistent prices", () => {
     expect(plans.map((p) => p.name)).toEqual(["Ello Performance", "Ello Expansão", "Ello Conexão"]);
-    for (const p of plans) expect(JSON.stringify(p)).not.toMatch(/R\$\s?\d/);
+    const [performance, expansao, conexao] = plans;
+    expect(performance?.prices?.mensal.monthly).toBe(2600);
+    expect(expansao?.prices?.mensal.monthly).toBe(4950);
+    expect(conexao?.prices).toBeUndefined();
+    // anual: setup gratuito e economia de 20%
+    expect(periodSavings(performance!, "anual")).toBe(6240);
+    expect(periodSavings(expansao!, "anual")).toBe(11880);
+    expect(performance?.prices?.anual.setup).toBe(0);
   });
 
   it("lists the eight services from the wireframe", () => {

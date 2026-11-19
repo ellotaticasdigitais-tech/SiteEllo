@@ -27,6 +27,11 @@ export function whatsappLink(topic: WhatsAppTopic = "geral", number: string = si
   return `https://wa.me/${number}?text=${encodeURIComponent(whatsappMessages[topic])}`;
 }
 
+/** Link do WhatsApp com uma mensagem livre. */
+export function whatsappLinkText(text: string, number: string = site.whatsappNumber) {
+  return `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
+}
+
 /** Picks the most relevant pre-filled message for a pathname. */
 export function topicForPath(pathname: string): WhatsAppTopic {
   if (pathname.startsWith("/servicos/trafego-pago")) return "trafego";

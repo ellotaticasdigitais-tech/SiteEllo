@@ -1,12 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Check, HelpCircle } from "lucide-react";
+import { Check, Minus } from "lucide-react";
 
 import { Reveal } from "@/components/animations/motion";
 import { FaqSection, FinalCta } from "@/components/home/FaqCta";
 import { PlansCards } from "@/components/home/OfferSections";
 import { PageHero, SectionHeading, SiteShell } from "@/components/layout/SiteShell";
 import { homeFaq } from "@/data/faq";
-import { planAddon, planMatrix, plans } from "@/data/plans";
+import { formatBRL, planAddon, planIncludes, planMatrix, plans } from "@/data/plans";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/planos")({
@@ -14,7 +14,7 @@ export const Route = createFileRoute("/planos")({
     pageHead({
       title: "Planos Ello Performance, Expansão e Conexão — Ello",
       description:
-        "Compare os planos da Ello: Performance (tráfego, CRM, dashboard e Ello Lab), Expansão (+ redes, captação e concorrência) e Conexão (inbound e automação).",
+        "Planos da Ello a partir de R$ 2.080/mês: Performance (tráfego, CRM RD Station, dashboard e Ello Lab), Expansão (+ redes sociais, captação e concorrência) e Conexão (inbound e automação).",
       path: "/planos",
       jsonLd: [breadcrumbLd([{ name: "Início", path: "/" }, { name: "Planos", path: "/planos" }])],
     }),
@@ -32,7 +32,7 @@ function PlansPage() {
             Três planos, pensados para cada <span className="text-sun">fase</span> do seu negócio
           </>
         }
-        lead="O investimento é apresentado após o diagnóstico, de acordo com o escopo e o momento da sua empresa."
+        lead="Valores claros, sem letra miúda. Escolha entre mensal, semestral ou anual — no anual, o setup inicial é gratuito e você economiza 20%."
       />
 
       <section className="section-y bg-paper">
@@ -65,13 +65,13 @@ function PlansPage() {
                     </th>
                     {plans.map((p) => (
                       <td key={p.id} className="p-5">
-                        {row.values[p.id] === "yes" ? (
+                        {planIncludes(p.id, row.from) ? (
                           <span className="inline-flex items-center gap-1.5 font-semibold text-success">
                             <Check className="size-5" aria-hidden="true" /> Incluso
                           </span>
                         ) : (
                           <span className="inline-flex items-center gap-1.5 text-muted-foreground">
-                            <HelpCircle className="size-4" aria-hidden="true" /> Sob consulta
+                            <Minus className="size-4" aria-hidden="true" /> Não incluso
                           </span>
                         )}
                       </td>
@@ -81,8 +81,15 @@ function PlansPage() {
                 <tr className="bg-ink text-ink-foreground">
                   <th scope="row" className="p-5 font-semibold">Investimento</th>
                   {plans.map((p) => (
-                    <td key={p.id} className="p-5 font-display font-bold text-sun">
-                      Consultar investimento
+                    <td key={p.id} className="p-5">
+                      {p.prices ? (
+                        <>
+                          <span className="block font-display text-lg font-bold text-sun">a partir de {formatBRL(p.prices.anual.monthly)}/mês</span>
+                          <span className="text-xs text-ink-foreground/70">ou {formatBRL(p.prices.mensal.monthly)}/mês no mensal</span>
+                        </>
+                      ) : (
+                        <span className="font-display text-lg font-bold text-sun">A consultar</span>
+                      )}
                     </td>
                   ))}
                 </tr>
