@@ -55,3 +55,4 @@ export function useConsent() { // React hook for subscribing to consent state ch
 
 export function openCookiePreferences() { // function to open the cookie preferences modal
   window.dispatchEvent(new CustomEvent("ello:open-cookie-preferences")); // used by the cookie banner to open the preferences modal
+}
