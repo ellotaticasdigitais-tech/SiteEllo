@@ -1,11 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Compass, Eye, Handshake, LineChart, Target } from "lucide-react";
 
-import bulb from "@/assets/bulb.webp.asset.json";
 import { Reveal, Tilt } from "@/components/animations/motion";
 import { FinalCta } from "@/components/home/FaqCta";
 import { Founders, ProcessTimeline } from "@/components/home/PeopleSections";
 import { PageHero, SectionHeading, SiteShell } from "@/components/layout/SiteShell";
+import { AutoVideo } from "@/components/media/AutoVideo";
 import { Button } from "@/components/ui/button";
 import { stats } from "@/data/site";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
@@ -42,7 +42,7 @@ function AboutPage() {
           </>
         }
         lead="A Ello nasceu em Louveira-SP para profissionalizar o digital de empresas de todo o Brasil, do planejamento à venda. A Ello não vende apenas posts: conecta marketing, relacionamento, tecnologia e vendas."
-        aside={<img src={bulb.url} alt="" aria-hidden="true" width={736} height={736} className="mx-auto hidden w-72 animate-float-slow lg:block" />}
+        aside={<img src="/luma/luma-apresentando.webp" alt="Luma, a personagem da Ello, apresentando a agência" width={600} height={900} className="mx-auto hidden w-60 drop-shadow-2xl lg:block" />}
       />
 
       <section className="bg-paper py-14">
@@ -92,7 +92,66 @@ function AboutPage() {
         </div>
       </section>
 
+      <NossoEspaco />
+
       <FinalCta />
     </SiteShell>
+  );
+}
+
+type GalleryItem =
+  | { kind: "foto"; src: string; alt: string; w: number; h: number; caption?: string }
+  | { kind: "video"; src: string; poster: string; alt: string; caption?: string };
+
+const espaco: GalleryItem[] = [
+  { kind: "foto", src: "/espaco/escritorio-equipe.webp", alt: "Equipe da Ello trabalhando no escritório", w: 960, h: 1280, caption: "Nosso time no dia a dia" },
+  { kind: "foto", src: "/espaco/fachada.webp", alt: "Fachada da Ello Táticas Digitais em Louveira-SP", w: 1280, h: 960, caption: "Nossa sede em Louveira-SP" },
+  { kind: "video", src: "/videos/bastidores-1.mp4", poster: "/videos/bastidores-1.jpg", alt: "Bastidores: planejamento de conteúdo no workflow da Ello", caption: "Bastidores do planejamento" },
+  { kind: "foto", src: "/espaco/vitrine.webp", alt: "Vitrine da Ello com o lema planejar, criar, conectar e converter", w: 1280, h: 960 },
+  { kind: "foto", src: "/espaco/porta.webp", alt: "Porta de entrada da Ello com a logo e contatos", w: 960, h: 1280, caption: "Sala 03 — pode vir tomar um café" },
+  { kind: "video", src: "/videos/bastidores-2.mp4", poster: "/videos/bastidores-2.jpg", alt: "Bastidores: revisão de publicação no Instagram", caption: "Conteúdo revisado post a post" },
+  { kind: "foto", src: "/espaco/escritorio-mesas.webp", alt: "Estações de trabalho do escritório da Ello", w: 960, h: 1280 },
+  { kind: "foto", src: "/espaco/fachada-rua.webp", alt: "Vista da rua do prédio onde fica a Ello", w: 1280, h: 960 },
+];
+
+function NossoEspaco() {
+  return (
+    <section aria-labelledby="nosso-espaco" className="section-y bg-cream">
+      <div className="container-site">
+        <SectionHeading
+          eyebrow="Nosso espaço"
+          title={<span id="nosso-espaco">Uma agência de verdade, com porta aberta</span>}
+          lead="Aqui é onde as táticas saem do papel: planejamento, criação, reuniões e atendimento acontecem no nosso escritório em Louveira-SP."
+        />
+        <div className="mt-12 columns-1 gap-5 sm:columns-2 lg:columns-3 [&>*]:mb-5">
+          {espaco.map((item, i) => (
+            <Reveal key={item.src} delay={(i % 3) * 80} className="break-inside-avoid">
+              <figure className="group relative overflow-hidden rounded-[1.75rem] bg-ink shadow-soft">
+                {item.kind === "foto" ? (
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    width={item.w}
+                    height={item.h}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-auto w-full transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                ) : (
+                  <div className="aspect-[9/16]">
+                    <AutoVideo src={item.src} poster={item.poster} label={item.alt} />
+                  </div>
+                )}
+                {item.caption && (
+                  <figcaption className="pointer-events-none absolute inset-x-3 bottom-3 rounded-2xl bg-ink/80 px-4 py-2 text-sm font-semibold text-ink-foreground backdrop-blur">
+                    {item.caption}
+                  </figcaption>
+                )}
+              </figure>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Bot, Check, Clapperboard, Compass, Fingerprint, Megaphone, MonitorSmartphone, Palette, Share2, Workflow, Wrench } from "lucide-react";
 
-import computer from "@/assets/computer.webp.asset.json";
 import { Reveal, Tilt } from "@/components/animations/motion";
 import { SectionHeading } from "@/components/layout/SiteShell";
 import { Button } from "@/components/ui/button";
@@ -80,7 +79,7 @@ export function TechSection() {
         <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
           <SectionHeading eyebrow="Diferencial — não é só agência" title={<span id="tecnologia">Tecnologia própria da Ello</span>} />
           <Reveal variant="right" className="hidden lg:block">
-            <img src={computer.url} alt="" aria-hidden="true" width={960} height={1200} loading="lazy" className="w-44 -rotate-6" />
+            <img src="/luma/luma-pensando.webp" alt="" aria-hidden="true" width={643} height={900} loading="lazy" className="w-36 drop-shadow-xl" />
           </Reveal>
         </div>
 

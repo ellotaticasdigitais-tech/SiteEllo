@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Users } from "lucide-react";
 
-import sparkles from "@/assets/sparkles.webp.asset.json";
 import { BlurBlobs, Reveal, RevealLine, Tilt } from "@/components/animations/motion";
 import { EllomMark } from "@/components/brand/Logo";
 import { LabForm } from "@/components/forms/forms";
@@ -18,16 +17,32 @@ export function Founders() {
     <section aria-labelledby="quem-somos" className="section-y relative overflow-hidden bg-paper">
       <div className="container-site grid items-center gap-12 lg:grid-cols-2">
         <Reveal variant="left" className="relative">
-          <div className="relative aspect-[5/4] overflow-hidden rounded-[2.5rem] bg-ink-pattern shadow-lift">
-            <div className="absolute inset-0 grid place-items-center p-8 text-center">
-              <div>
-                <EllomMark tone="light" className="mx-auto h-20 w-20" spin />
-                <p className="mt-6 font-display text-3xl font-extrabold">Melina & Lucas</p>
-                <p className="mt-2 text-sm text-ink-foreground/70">Vídeo e fotos reais dos fundadores em produção</p>
-              </div>
-            </div>
-          </div>
-          <img src={sparkles.url} alt="" aria-hidden="true" width={187} height={333} loading="lazy" className="absolute -right-4 -top-8 w-16 animate-float-slow" />
+          <figure className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-ink shadow-lift sm:aspect-[5/6]">
+            <img
+              src="/espaco/familia-a.webp"
+              alt="Lucas e Melina com os filhos Enrico e Miguel na porta da Ello, em Louveira-SP"
+              width={960}
+              height={1280}
+              loading="lazy"
+              className="h-full w-full object-cover object-[50%_35%]"
+            />
+            <figcaption className="absolute inset-x-4 bottom-4 flex items-center gap-3 rounded-2xl bg-ink/85 px-4 py-3 text-ink-foreground backdrop-blur">
+              <EllomMark tone="light" className="h-9 w-9" />
+              <span className="text-sm leading-snug">
+                <strong className="block font-display text-base">Melina & Lucas</strong>
+                Fundadores da Ello, na nossa sede em Louveira
+              </span>
+            </figcaption>
+          </figure>
+          <img
+            src="/luma/luma-acenando.webp"
+            alt=""
+            aria-hidden="true"
+            width={643}
+            height={900}
+            loading="lazy"
+            className="pointer-events-none absolute -bottom-6 -right-6 hidden w-28 drop-shadow-xl sm:block lg:-right-10 lg:w-32"
+          />
         </Reveal>
         <div>
           <SectionHeading

@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Bot, Clock, KanbanSquare, MessageCircle, UserRound } from "lucide-react";
 
-import computer from "@/assets/computer.webp.asset.json";
 import { BlurBlobs, Reveal } from "@/components/animations/motion";
 import { CrmInterestForm } from "@/components/forms/forms";
 import { FinalCta } from "@/components/home/FaqCta";
@@ -40,7 +39,7 @@ function TechPage() {
           </>
         }
         lead="A Ello desenvolve suas próprias ferramentas para conectar marketing, atendimento e vendas."
-        aside={<img src={computer.url} alt="" aria-hidden="true" width={960} height={1200} className="mx-auto hidden w-56 rotate-3 rounded-3xl bg-paper p-4 lg:block" />}
+        aside={<img src="/luma/luma-perfil.webp" alt="" aria-hidden="true" width={643} height={900} className="mx-auto hidden w-52 drop-shadow-2xl lg:block" />}
       />
 
       <section className="section-y bg-paper">

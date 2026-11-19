@@ -39,6 +39,7 @@ function ContactPage() {
           </>
         }
         lead={plan ? `Você escolheu o ${plan.name}. Conte um pouco sobre sua empresa e retornamos com o investimento e os próximos passos.` : "Escolha o canal que preferir: formulário, WhatsApp ou e-mail."}
+        aside={<img src="/luma/luma-animada.webp" alt="" aria-hidden="true" width={643} height={900} className="mx-auto hidden w-48 drop-shadow-2xl lg:block" />}
       />
       <section className="section-y bg-paper">
         <div className="container-site grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">

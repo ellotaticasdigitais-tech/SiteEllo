@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowRight, Play } from "lucide-react";
 
-import sparkles from "@/assets/sparkles.webp.asset.json";
 import { BlurBlobs, Magnetic, Reveal, RotatingWord } from "@/components/animations/motion";
 import { EllomMark } from "@/components/brand/Logo";
 import { Button } from "@/components/ui/button";
@@ -18,14 +17,6 @@ export function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-ink-pattern pb-16 pt-28 sm:pt-36 lg:pb-24">
       <BlurBlobs />
-      <img
-        src={sparkles.url}
-        alt=""
-        aria-hidden="true"
-        width={187}
-        height={333}
-        className="pointer-events-none absolute right-[4%] top-24 hidden w-20 animate-float-slow opacity-90 lg:block"
-      />
       <div className="container-site grid items-center gap-12 lg:grid-cols-[1.25fr_0.9fr]">
         <div className="min-w-0">
           <Reveal>

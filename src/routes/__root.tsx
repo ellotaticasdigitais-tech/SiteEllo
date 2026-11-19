@@ -23,7 +23,7 @@ function NotFoundComponent() {
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-ink-pattern px-4">
       <div className="max-w-lg text-center">
-        <EllomMark tone="light" className="mx-auto h-20 w-20" spin />
+        <img src="/luma/luma-sentada.webp" alt="" aria-hidden="true" width={790} height={900} className="mx-auto w-44 drop-shadow-2xl sm:w-52" />
         <p className="eyebrow eyebrow-on-ink mt-8">Erro 404</p>
         <h1 className="display-lg mt-3">Essa página saiu da rota.</h1>
         <p className="lead mt-4 text-ink-foreground/80">

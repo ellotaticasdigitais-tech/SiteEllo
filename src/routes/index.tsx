@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CasesSection } from "@/components/home/CasesSection";
 import { FaqSection, FinalCta } from "@/components/home/FaqCta";
 import { Hero } from "@/components/home/Hero";
+import { IntroVideo } from "@/components/home/IntroVideo";
 import { DiagnosticSection, MethodSection } from "@/components/home/MethodSection";
 import { PlansSection, ServicesSection, TechSection } from "@/components/home/OfferSections";
 import { Founders, LabSection, LabSignup, ProcessSection } from "@/components/home/PeopleSections";
@@ -26,6 +27,7 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <SiteShell>
+      <IntroVideo />
       <Hero />
       <PartnersStrip />
       <BrandsMarquee />
