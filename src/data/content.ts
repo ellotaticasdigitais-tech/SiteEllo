@@ -73,4 +73,5 @@ export const clientLogos: { name: string; src?: string; bg?: string; fill?: bool
   { name: "ERA", src: "/clientes/era.webp", bg: "#CFFF00" },
   { name: "SkyFit Academia", src: "/clientes/skyfit.webp" },
   { name: "Alvorada Supermercados", src: "/clientes/alvorada.webp", bg: "#7A1512", fade: true },
+  { name: "MF Cortes e Furos em Concreto", src: "/clientes/mf-furos.webp", bg: "#141313" },
 ];

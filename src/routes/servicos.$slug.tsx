@@ -178,12 +178,12 @@ function ServicePage() {
           <div className="container-site">
             <SectionHeading eyebrow="Prova" title="Resultado de quem já roda com a gente" />
             <ul className="mt-12 grid gap-5 md:grid-cols-3">
-              {cases.map((c, i) => (
+              {(cases.filter((c) => c.services?.includes(s.slug)).length ? cases.filter((c) => c.services?.includes(s.slug)) : cases).slice(0, 3).map((c, i) => (
                 <Reveal as="li" key={c.slug} delay={i * 80}>
                   <Link to="/cases/$slug" params={{ slug: c.slug }} className="group block h-full rounded-3xl border border-border bg-card p-6 shadow-soft transition-all hover:-translate-y-1 hover:shadow-lift">
                     <p className="eyebrow">{c.segment}</p>
                     <p className="mt-2 font-display text-2xl font-bold">{c.client}</p>
-                    <p className="mt-2 text-sm text-muted-foreground">Case em preparação — números publicados após autorização.</p>
+                    <p className="mt-2 text-sm text-muted-foreground">{c.headline}</p>
                     <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-plum">
                       Ver case <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                     </span>

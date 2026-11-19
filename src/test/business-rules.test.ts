@@ -73,8 +73,10 @@ describe("Regras de conteúdo", () => {
     expect(coreServices).toHaveLength(8);
   });
 
-  it("keeps cases without authorization as drafts and has no fictional blog posts", () => {
-    expect(cases.every((c) => c.status === "draft" || (c.results?.length ?? 0) > 0)).toBe(true);
+  it("highlights the Ello case, only shows sourced numbers and has no fictional blog posts", () => {
+    expect(cases.filter((c) => c.featured).map((c) => c.slug)).toEqual(["ello-taticas-digitais"]);
+    // números só com fonte e período
+    for (const c of cases) for (const r of c.results ?? []) expect(r.period).toBeTruthy();
     expect(blogPosts).toHaveLength(0);
   });
 });

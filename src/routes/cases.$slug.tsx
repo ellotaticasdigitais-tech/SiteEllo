@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowUpRight, Hourglass } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 
 import { Reveal } from "@/components/animations/motion";
+import { CaseCard, CaseLogo, CreativeCarousel, InstagramButton } from "@/components/home/CasesSection";
 import { FinalCta } from "@/components/home/FaqCta";
 import { PageHero, SectionHeading, SiteShell } from "@/components/layout/SiteShell";
 import { Button } from "@/components/ui/button";
-import { getCase } from "@/data/cases";
+import { cases, getCase, niches } from "@/data/cases";
 import { getService } from "@/data/services";
 import { track } from "@/lib/analytics";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
@@ -23,7 +24,7 @@ export const Route = createFileRoute("/cases/$slug")({
     const { c } = loaderData;
     return pageHead({
       title: `Case ${c.client} — Ello Táticas Digitais`,
-      description: c.headline ?? `Case da Ello com ${c.client}, segmento ${c.segment.toLowerCase()}.`,
+      description: `${c.headline}. ${c.summary}`.slice(0, 158),
       path: `/cases/${c.slug}`,
       type: "article",
       noindex: c.status !== "published",
@@ -38,71 +39,73 @@ function CasePage() {
   useEffect(() => {
     track("case_view", { case: c.slug });
   }, [c.slug]);
-  const published = c.status === "published";
+  const niche = niches.find((n) => n.id === c.niche)?.label ?? c.segment;
+  const related = cases.filter((x) => x.slug !== c.slug && (x.niche === c.niche || x.featured)).slice(0, 2);
 
   return (
     <SiteShell>
       <PageHero
-        crumbs={[{ label: "Home", to: "/" }, { label: "Cases", to: "/cases" }, { label: c.client }]}
-        eyebrow={`Case de sucesso · ${c.segment}`}
-        title={published && c.headline ? c.headline : c.client}
-        lead={published ? undefined : "Este case está em preparação. Os números, o período de referência e as peças serão publicados após a validação e autorização do cliente."}
+        crumbs={[{ label: "Início", to: "/" }, { label: "Cases", to: "/cases" }, { label: c.client }]}
+        eyebrow={`${c.featured ? "Case principal" : "Case"} · ${niche}`}
+        title={c.headline}
+        lead={c.summary}
+        aside={<CaseLogo c={c} className="mx-auto hidden h-36 w-64 rounded-[2rem] shadow-lift lg:flex" />}
       >
-        <Button asChild variant="sun" size="lg">
-          <a href={whatsappLink("cases")} target="_blank" rel="noopener noreferrer" onClick={() => track("whatsapp_click", { location: "case_hero", case: c.slug })}>
-            Quero um resultado assim
-          </a>
-        </Button>
+        <div className="flex flex-wrap gap-3">
+          <Button asChild variant="sun" size="lg">
+            <a href={whatsappLink("cases")} target="_blank" rel="noopener noreferrer" onClick={() => track("whatsapp_click", { location: "case_hero", case: c.slug })}>
+              Quero um resultado assim
+            </a>
+          </Button>
+          <InstagramButton c={c} variant="outline-light" />
+        </div>
       </PageHero>
 
-      {!published && (
-        <section className="section-y bg-paper">
+      {c.creatives.length > 0 && (
+        <section aria-labelledby="pecas" className="section-y bg-paper">
           <div className="container-site">
-            <Reveal className="mx-auto max-w-2xl rounded-[2rem] border-2 border-dashed border-border bg-card p-10 text-center">
-              <Hourglass className="mx-auto size-10 text-violet" aria-hidden="true" />
-              <h2 className="display-md mt-4">Resultados em validação</h2>
-              <p className="mt-3 text-muted-foreground">
-                Na Ello, nenhum número é publicado sem fonte marcada e autorização de uso. Enquanto isso, conheça outros caminhos.
-              </p>
-              <div className="mt-6 flex flex-wrap justify-center gap-3">
-                <Button asChild variant="ink"><Link to="/cases">Ver todos os cases</Link></Button>
-                <Button asChild variant="outline-ink"><Link to="/servicos">Conhecer os serviços</Link></Button>
-              </div>
+            <SectionHeading eyebrow="Trabalhos" title={<span id="pecas">Peças criadas para a {c.client}</span>} />
+            <Reveal className="mt-10">
+              <CreativeCarousel items={c.creatives} label={`Peças do case ${c.client}`} size="lg" />
             </Reveal>
           </div>
         </section>
       )}
 
-      {published && c.challenge && (
-        <section className="section-y bg-paper">
-          <div className="container-site max-w-3xl">
-            <SectionHeading eyebrow="O desafio" title="Onde o cliente estava antes da Ello" />
-            <div className="lead mt-6 space-y-4 text-muted-foreground">{c.challenge.map((p) => <p key={p}>{p}</p>)}</div>
-          </div>
-        </section>
-      )}
-
-      {published && c.services && (
-        <section className="section-y bg-cream">
-          <div className="container-site">
-            <SectionHeading eyebrow="O que a Ello fez" title="Serviços aplicados neste case" />
-            <ul className="mt-10 flex flex-wrap gap-3">
-              {c.services.map((slug) => {
-                const s = getService(slug);
-                return s ? (
-                  <li key={slug}>
-                    <Link to="/servicos/$slug" params={{ slug }} className="inline-flex items-center gap-1.5 rounded-full bg-card px-5 py-3 font-semibold shadow-soft hover:bg-sun">
-                      {s.name} <ArrowUpRight className="size-4" />
-                    </Link>
-                  </li>
-                ) : null;
-              })}
+      <section aria-labelledby="entregas" className="section-y bg-cream">
+        <div className="container-site grid gap-12 lg:grid-cols-2">
+          <div>
+            <SectionHeading eyebrow="O que a Ello fez" title={<span id="entregas">Entregas deste case</span>} />
+            <ul className="mt-8 space-y-3">
+              {c.delivered.map((d) => (
+                <li key={d} className="flex gap-3 rounded-2xl bg-card p-4 shadow-soft">
+                  <CheckCircle2 className="mt-0.5 size-5 shrink-0" style={{ color: c.accent }} aria-hidden="true" />
+                  <span className="font-semibold">{d}</span>
+                </li>
+              ))}
             </ul>
           </div>
-        </section>
-      )}
+          {c.services && c.services.length > 0 && (
+            <div>
+              <SectionHeading eyebrow="Serviços" title="Serviços aplicados" />
+              <ul className="mt-8 flex flex-wrap gap-3">
+                {c.services.map((slug) => {
+                  const s = getService(slug);
+                  return s ? (
+                    <li key={slug}>
+                      <Link to="/servicos/$slug" params={{ slug }} className="inline-flex items-center gap-1.5 rounded-full bg-card px-5 py-3 font-semibold shadow-soft hover:bg-sun">
+                        {s.name} <ArrowUpRight className="size-4" />
+                      </Link>
+                    </li>
+                  ) : null;
+                })}
+              </ul>
+            </div>
+          )}
+        </div>
+      </section>
 
-      {published && c.results && (
+      {c.results && c.results.length > 0 && (
         <section className="section-y bg-paper">
           <div className="container-site">
             <SectionHeading eyebrow="Resultados" title="Números, com fonte" />
@@ -111,7 +114,9 @@ function CasePage() {
                 <li key={r.metric} className="rounded-3xl bg-ink-pattern p-7 shadow-lift">
                   <p className="font-display text-5xl font-extrabold text-sun">{r.value}</p>
                   <p className="mt-2 font-semibold">{r.metric}</p>
-                  <p className="mt-1 text-xs text-ink-foreground/70">Fonte: {r.source}, {r.period}</p>
+                  <p className="mt-1 text-xs text-ink-foreground/70">
+                    Fonte: {r.source}, {r.period}
+                  </p>
                 </li>
               ))}
             </ul>
@@ -119,12 +124,17 @@ function CasePage() {
         </section>
       )}
 
-      {published && c.testimonial && (
-        <section className="section-y bg-cream">
-          <div className="container-site max-w-3xl text-center">
-            <p className="eyebrow">Na voz do cliente</p>
-            <blockquote className="display-md mt-4">“{c.testimonial.text}”</blockquote>
-            <p className="mt-4 font-semibold">{c.testimonial.author}, {c.testimonial.role} — {c.client}, {c.testimonial.city}</p>
+      {related.length > 0 && (
+        <section aria-labelledby="outros-cases" className="section-y bg-paper">
+          <div className="container-site">
+            <SectionHeading eyebrow="Continue vendo" title={<span id="outros-cases">Outros cases</span>} />
+            <ul className="mt-10 grid gap-6 lg:grid-cols-2">
+              {related.map((r) => (
+                <li key={r.slug} className="min-w-0">
+                  <CaseCard c={r} />
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       )}
