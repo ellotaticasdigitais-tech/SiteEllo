@@ -20,18 +20,18 @@ export function Founders() {
         <Reveal variant="left" className="relative">
           <figure className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-ink shadow-lift sm:aspect-[5/6]">
             <img
-              src="/espaco/familia-a.webp"
-              alt="Lucas e Melina com os filhos Enrico e Miguel na porta da Ello, em Louveira-SP"
-              width={960}
-              height={1280}
+              src="/espaco/melina-lucas.webp"
+              alt="Retrato de Melina e Lucas, fundadores da Ello Táticas Digitais"
+              width={972}
+              height={1476}
               loading="lazy"
-              className="h-full w-full object-cover object-[50%_35%]"
+              className="h-full w-full object-cover object-[50%_20%]"
             />
             <figcaption className="absolute inset-x-4 bottom-4 flex items-center gap-3 rounded-2xl bg-ink/85 px-4 py-3 text-ink-foreground backdrop-blur">
               <EllomMark tone="light" className="h-9 w-9" />
               <span className="text-sm leading-snug">
                 <strong className="block font-display text-base">Melina & Lucas</strong>
-                Fundadores da Ello, na nossa sede em Louveira
+                Fundadores da Ello Táticas Digitais
               </span>
             </figcaption>
           </figure>

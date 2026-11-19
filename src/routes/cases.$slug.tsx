@@ -6,6 +6,8 @@ import { Reveal } from "@/components/animations/motion";
 import { CaseCard, CaseLogo, CreativeCarousel, InstagramButton } from "@/components/home/CasesSection";
 import { FinalCta } from "@/components/home/FaqCta";
 import { PageHero, SectionHeading, SiteShell } from "@/components/layout/SiteShell";
+import { VideoReel } from "@/components/media/VideoReel";
+import { captacoes } from "@/data/videos";
 import { Button } from "@/components/ui/button";
 import { cases, getCase, niches } from "@/data/cases";
 import { getService } from "@/data/services";
@@ -40,6 +42,7 @@ function CasePage() {
     track("case_view", { case: c.slug });
   }, [c.slug]);
   const niche = niches.find((n) => n.id === c.niche)?.label ?? c.segment;
+  const videos = captacoes.filter((v) => v.caseSlug === c.slug);
   const related = cases.filter((x) => x.slug !== c.slug && (x.niche === c.niche || x.featured)).slice(0, 2);
 
   return (
@@ -68,6 +71,17 @@ function CasePage() {
             <Reveal className="mt-10">
               <CreativeCarousel items={c.creatives} label={`Peças do case ${c.client}`} size="lg" />
             </Reveal>
+          </div>
+        </section>
+      )}
+
+      {videos.length > 0 && (
+        <section aria-labelledby="videos-case" className="section-y bg-ink-pattern text-ink-foreground">
+          <div className="container-site">
+            <SectionHeading tone="light" eyebrow="Captação e edição" title={<span id="videos-case">Vídeos deste case</span>} />
+            <div className="mt-10">
+              <VideoReel items={videos} dark label={`Vídeos do case ${c.client}`} />
+            </div>
           </div>
         </section>
       )}

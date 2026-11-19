@@ -10,6 +10,8 @@ import { SectionHeading } from "@/components/layout/SiteShell";
 import { WhatsAppIcon } from "@/components/layout/WhatsAppFloat";
 import { Button } from "@/components/ui/button";
 import { cases } from "@/data/cases";
+import { captacoes } from "@/data/videos";
+import { VideoReel } from "@/components/media/VideoReel";
 import { getService } from "@/data/services";
 import { partners, site } from "@/data/site";
 import { track } from "@/lib/analytics";
@@ -134,6 +136,23 @@ function ServicePage() {
             </ul>
           </div>
         </section>
+
+        {/* Vídeos (só no serviço de captação e edição) */}
+        {s.slug === "captacao-e-edicao-de-video" && (
+          <section aria-labelledby="portfolio-videos" className="section-y bg-ink-pattern text-ink-foreground">
+            <div className="container-site">
+              <SectionHeading
+                tone="light"
+                eyebrow="Portfólio"
+                title={<span id="portfolio-videos">Captações e edições da Ello</span>}
+                lead="Do roteiro à edição final: vídeos verticais pensados para Reels, TikTok e anúncios. Dê o play."
+              />
+              <div className="mt-12">
+                <VideoReel items={captacoes} dark />
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Problem */}
         <section className="bg-sun-pattern py-20">

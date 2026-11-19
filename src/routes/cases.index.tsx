@@ -3,6 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CasesExplorer, FeaturedCase } from "@/components/home/CasesSection";
 import { FinalCta } from "@/components/home/FaqCta";
 import { PageHero, SectionHeading, SiteShell } from "@/components/layout/SiteShell";
+import { VideoReel } from "@/components/media/VideoReel";
+import { captacoes } from "@/data/videos";
 import { cases } from "@/data/cases";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
 
@@ -33,6 +35,19 @@ function CasesHub() {
       />
 
       <FeaturedCase />
+
+      <section aria-labelledby="captacoes" className="section-y bg-paper">
+        <div className="container-site">
+          <SectionHeading
+            eyebrow="Captação e edição"
+            title={<span id="captacoes">Vídeos que a Ello captou e editou</span>}
+            lead="Roteiro, gravação e edição feitos pelo nosso time. Dê o play — com som."
+          />
+          <div className="mt-12">
+            <VideoReel items={captacoes} />
+          </div>
+        </div>
+      </section>
 
       <section aria-labelledby="todos-cases" className="section-y bg-cream">
         <div className="container-site">
