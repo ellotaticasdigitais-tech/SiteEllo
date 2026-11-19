@@ -91,7 +91,7 @@ export function SiteHeader({ tone = "dark" }: { tone?: "dark" | "light" }) {
               </div>
               <nav aria-label="Menu móvel" className="flex-1 px-5">
                 <ul className="space-y-1">
-                  {[{ to: "/", label: "Início" }, ...mainNav, { to: "/planos", label: "Planos" }, { to: "/ello-lab", label: "Ello Lab" }, { to: "/contato", label: "Contato" }].map(
+                  {[{ to: "/", label: "Início" }, ...mainNav, { to: "/planos", label: "Planos" }, { to: "/contato", label: "Contato" }].map(
                     (item, i) => (
                       <li key={item.to} className="animate-in fade-in slide-in-from-right-4" style={{ animationDelay: `${i * 40}ms`, animationFillMode: "both" }}>
                         <SheetClose asChild>

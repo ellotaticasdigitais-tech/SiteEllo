@@ -6,7 +6,8 @@ import { Hero } from "@/components/home/Hero";
 import { IntroVideo } from "@/components/home/IntroVideo";
 import { DiagnosticSection, MethodSection } from "@/components/home/MethodSection";
 import { PlansSection, ServicesSection, TechSection } from "@/components/home/OfferSections";
-import { Founders, LabSection, LabSignup, ProcessSection } from "@/components/home/PeopleSections";
+import { Founders, LabSection, ProcessSection } from "@/components/home/PeopleSections";
+import { CommunityCta } from "@/components/lab/Community";
 import { BrandsMarquee, PartnersStrip, Positioning, Testimonials } from "@/components/home/ProofSections";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { homeFaq } from "@/data/faq";
@@ -42,7 +43,7 @@ function Home() {
       <Founders />
       <ProcessSection />
       <LabSection />
-      <LabSignup />
+      <CommunityCta location="home_comunidade" />
       <FaqSection items={homeFaq} />
       <FinalCta />
     </SiteShell>

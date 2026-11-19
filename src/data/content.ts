@@ -2,7 +2,8 @@
 export const labBenefits = [
   "Curso de vendas com certificado",
   "Mentorias em grupo com a equipe Ello",
-  "Eventos exclusivos e descontos para a comunidade",
+  "Eventos exclusivos para a comunidade",
+  "Desconto de membro fundador para quem entrar no grupo agora",
 ];
 
 export const labLessons = [

@@ -12,6 +12,8 @@ export const site = {
   phoneDisplay: "(19) 99865-0372",
   phoneE164: "+5519998650372",
   whatsappNumber: "5519998650372",
+  /** Grupo da comunidade Ello Lab no WhatsApp. */
+  communityUrl: "https://chat.whatsapp.com/EwzXvTYJD6JI6m4edy9Tve",
   email: "comercial@ellotaticasdigitais.com.br",
   address: {
     street: "R. Dr. José Romeiro Pereira, 300 — Sala 03",
@@ -54,6 +56,7 @@ export const mainNav = [
   { to: "/metodo-acelera", label: "Método ACELERA" },
   { to: "/cases", label: "Cases" },
   { to: "/sobre", label: "Sobre" },
+  { to: "/ello-lab", label: "Ello Lab" },
   { to: "/blog", label: "Blog" },
 ] as const;
 

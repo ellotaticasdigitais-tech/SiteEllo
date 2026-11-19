@@ -4,6 +4,7 @@ import { ArrowRight, Users } from "lucide-react";
 import { BlurBlobs, Reveal, RevealLine, Tilt } from "@/components/animations/motion";
 import { EllomMark } from "@/components/brand/Logo";
 import { LabForm } from "@/components/forms/forms";
+import { CommunityButton, LabStatus, LabTeaser } from "@/components/lab/Community";
 import { SectionHeading } from "@/components/layout/SiteShell";
 import { WhatsAppIcon } from "@/components/layout/WhatsAppFloat";
 import { Button } from "@/components/ui/button";
@@ -133,32 +134,36 @@ export function LabSection() {
   return (
     <section id="ello-lab" aria-labelledby="lab-titulo" className="section-y relative isolate overflow-hidden bg-ink-pattern">
       <BlurBlobs />
-      <div className="container-site grid items-center gap-14 lg:grid-cols-2">
+      <div className="container-site grid items-center gap-14 lg:grid-cols-[1.2fr_0.8fr]">
         <div>
+          <LabStatus light className="mb-5" />
           <SectionHeading
             tone="light"
-            eyebrow="Plataforma de conhecimento"
+            eyebrow="Ello Lab"
             title={
               <span id="lab-titulo">
-                Ello Lab — o clube de quem quer <span className="text-sun">crescer de verdade</span>
+                O laboratório da Ello está <span className="text-sun">quase pronto</span>
               </span>
             }
-            lead="Cursos com certificado, mentorias e eventos exclusivos para empresários que buscam alta performance em vendas e marketing. Incluso no plano Ello Performance."
+            lead="Cursos com certificado, mentorias e eventos para empresários que querem alta performance em vendas e marketing. Enquanto a plataforma é finalizada, tudo acontece na comunidade."
           />
           <ul className="mt-8 space-y-3">
             {labBenefits.map((b, i) => (
               <Reveal as="li" key={b} delay={i * 80} className="flex items-center gap-3 font-semibold">
-                <ArrowRight className="size-5 text-sun" aria-hidden="true" /> {b}
+                <ArrowRight className="size-5 shrink-0 text-sun" aria-hidden="true" /> {b}
               </Reveal>
             ))}
           </ul>
-          <Reveal delay={260}>
-            <Button asChild variant="sun" size="lg" className="mt-8">
-              <a href="#cadastro-lab">Quero entrar no Ello Lab ↓</a>
+          <Reveal delay={260} className="mt-8 flex flex-wrap gap-3">
+            <CommunityButton location="home_lab" />
+            <Button asChild variant="outline-light" size="lg">
+              <Link to="/ello-lab">Conhecer o Ello Lab</Link>
             </Button>
           </Reveal>
         </div>
-        <LabStack />
+        <Reveal variant="right">
+          <LabTeaser />
+        </Reveal>
       </div>
     </section>
   );

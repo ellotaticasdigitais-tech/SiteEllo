@@ -66,6 +66,7 @@ export function SiteFooter() {
           <li><Link to="/cases" className="hover:text-sun">Cases</Link></li>
           <li><Link to="/tecnologia" className="hover:text-sun">Ello IA e Ello CRM</Link></li>
           <li><Link to="/ello-lab" className="hover:text-sun">Ello Lab</Link></li>
+          <li><a href={site.communityUrl} target="_blank" rel="noopener noreferrer" className="hover:text-sun">Comunidade no WhatsApp</a></li>
           <li><Link to="/blog" className="hover:text-sun">Blog</Link></li>
           <li><Link to="/contato" className="hover:text-sun">Contato</Link></li>
         </FooterCol>
