@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { clientLogos, testimonials } from "@/data/content";
 import { comparison, partners } from "@/data/site";
 import { track } from "@/lib/analytics";
+import { cn } from "@/lib/utils";
 import { whatsappLink } from "@/lib/whatsapp";
 
 export function PartnersStrip() {
@@ -39,11 +40,28 @@ export function BrandsMarquee() {
         <p className="eyebrow">Prova real</p>
         <h2 id="marcas" className="display-md mt-2">Marcas que já cresceram com a Ello</h2>
       </div>
-      <Marquee duration={30}>
-        {[...clientLogos, ...clientLogos, ...clientLogos].map((c, i) => (
-          <span key={`${c.name}-${i}`} className="mx-4 flex h-20 min-w-56 items-center justify-center rounded-2xl border border-border bg-card px-8 shadow-soft">
+      <Marquee duration={60}>
+        {clientLogos.map((c, i) => (
+          <span
+            key={`${c.name}-${i}`}
+            className={cn(
+              "mx-4 flex h-20 w-56 shrink-0 items-center justify-center overflow-hidden rounded-2xl shadow-soft",
+              c.bg ? "" : "border border-border bg-card px-8",
+              c.bg && !c.fill && "px-6 py-2",
+            )}
+            style={c.bg ? { backgroundColor: c.bg } : undefined}
+          >
             {c.src ? (
-              <img src={c.src} alt={c.name} className="max-h-10 w-auto" loading="lazy" />
+              <img
+                src={c.src}
+                alt={c.name}
+                loading="lazy"
+                className={cn(
+                  c.fill ? "h-full w-full object-cover" : "w-auto object-contain",
+                  !c.fill && (c.bg ? "h-full" : "max-h-12 max-w-full"),
+                  c.fade && "[mask-image:radial-gradient(closest-side,black_70%,transparent)]",
+                )}
+              />
             ) : (
               <span className="font-display text-xl font-bold tracking-tight text-ink/80">{c.name}</span>
             )}

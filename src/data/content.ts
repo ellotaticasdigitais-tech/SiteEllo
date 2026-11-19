@@ -53,8 +53,24 @@ export const blogCategories = ["Tráfego pago", "Branding", "Conteúdo e redes",
 export const testimonials: { text: string; author: string; detail: string; source: "Google" | "WhatsApp" | "Vídeo" }[] = [];
 
 /** Client logos authorized for the marquee. Names only until official logo files are provided. */
-export const clientLogos: { name: string; src?: string }[] = [
-  { name: "Blueberry Alimentos" },
-  { name: "Ecopietra" },
-  { name: "Aghuia" },
+/**
+ * Logos dos clientes (public/clientes).
+ * - Sem `bg`: logo recortada, aparece no cartão branco.
+ * - Com `bg`: o cartão ganha a cor de fundo da própria logo.
+ * - `fill`: a imagem cobre o cartão inteiro.
+ * - `fade`: suaviza as bordas da imagem (para fundos em degradê).
+ */
+export const clientLogos: { name: string; src?: string; bg?: string; fill?: boolean; fade?: boolean }[] = [
+  { name: "Blueberry Alimentos", src: "/clientes/blueberry.webp" },
+  { name: "Empo Soluções em Construção", src: "/clientes/empo.webp" },
+  { name: "TL Mídia Indoor", src: "/clientes/tl-midia-indoor.webp", bg: "#EB630A" },
+  { name: "KIE Equipamentos para Reciclagem", src: "/clientes/kie.webp" },
+  { name: "BM Estrutural", src: "/clientes/bm.webp" },
+  { name: "Exon", src: "/clientes/exon.webp", bg: "#1A0624", fill: true },
+  { name: "MiiZMED", src: "/clientes/miizmed.webp" },
+  { name: "Rede Mercadão Central", src: "/clientes/mercadao-central.webp", bg: "#008345" },
+  { name: "Leva Fácil Entulho", src: "/clientes/levafacil.webp" },
+  { name: "ERA", src: "/clientes/era.webp", bg: "#CFFF00" },
+  { name: "SkyFit Academia", src: "/clientes/skyfit.webp" },
+  { name: "Alvorada Supermercados", src: "/clientes/alvorada.webp", bg: "#7A1512", fade: true },
 ];
