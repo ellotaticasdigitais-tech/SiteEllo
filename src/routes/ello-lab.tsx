@@ -26,7 +26,7 @@ export const Route = createFileRoute("/ello-lab")({
     pageHead({
       title: "Ello Lab — comunidade e plataforma de conhecimento da Ello",
       description:
-        "O Ello Lab está em desenvolvimento: cursos com certificado, mentorias e eventos para empresários. Entre na comunidade no WhatsApp e garanta o desconto de membro fundador.",
+        "Ello Lab: cursos com certificado, mentorias e eventos para empresários. Em desenvolvimento — entre na comunidade e garanta desconto de fundador.",
       path: "/ello-lab",
       jsonLd: [breadcrumbLd([{ name: "Início", path: "/" }, { name: "Ello Lab", path: "/ello-lab" }])],
     }),

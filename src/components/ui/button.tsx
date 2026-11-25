@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-semibold cursor-pointer transition-[transform,background-color,color,box-shadow,border-color] duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.97] [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex max-w-full items-center justify-center gap-2 whitespace-normal text-center leading-tight sm:whitespace-nowrap rounded-full text-sm font-semibold cursor-pointer transition-[transform,background-color,color,box-shadow,border-color] duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.97] [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -24,10 +24,10 @@ const buttonVariants = cva(
         whatsapp: "bg-whatsapp text-whatsapp-foreground shadow-soft hover:-translate-y-0.5 hover:brightness-105",
       },
       size: {
-        default: "h-10 px-5 py-2",
-        sm: "h-9 px-4 text-xs",
-        lg: "h-13 px-7 text-[0.95rem]",
-        xl: "h-14 px-8 text-base",
+        default: "min-h-10 px-5 py-2",
+        sm: "min-h-9 px-4 py-1.5 text-xs",
+        lg: "min-h-13 px-6 py-3 text-[0.95rem] sm:px-7",
+        xl: "min-h-14 px-6 py-3 text-base sm:px-8",
         icon: "h-10 w-10",
       },
     },

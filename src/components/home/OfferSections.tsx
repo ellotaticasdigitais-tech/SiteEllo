@@ -175,7 +175,7 @@ export function PlansCards({ compact = false }: { compact?: boolean }) {
   return (
     <div>
       <div className="flex justify-center">
-        <div role="group" aria-label="Forma de pagamento" className="inline-flex rounded-full border border-border bg-card p-1.5 shadow-soft">
+        <div role="group" aria-label="Forma de pagamento" className="inline-flex max-w-full rounded-full border border-border bg-card p-1 shadow-soft sm:p-1.5">
           {billingPeriods.map((b) => (
             <button
               key={b.id}
@@ -186,13 +186,13 @@ export function PlansCards({ compact = false }: { compact?: boolean }) {
                 track("cta_click", { cta: `planos_periodo_${b.id}` });
               }}
               className={cn(
-                "relative inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors sm:px-6",
+                "relative inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-xs font-semibold transition-colors sm:gap-2 sm:px-6 sm:text-sm",
                 period === b.id ? "bg-ink text-ink-foreground shadow-soft" : "text-muted-foreground hover:text-foreground",
               )}
             >
               {b.label}
               {b.hint && (
-                <span className={cn("rounded-full px-2 py-0.5 text-[0.7rem] font-bold", period === b.id ? "bg-sun text-ink" : "bg-success/15 text-success")}>{b.hint}</span>
+                <span className={cn("rounded-full px-1.5 py-0.5 text-[0.65rem] font-bold sm:px-2 sm:text-[0.7rem]", period === b.id ? "bg-sun text-ink" : "bg-success/15 text-success")}>{b.hint}</span>
               )}
             </button>
           ))}

@@ -6,7 +6,7 @@ import { PageHero, SectionHeading, SiteShell } from "@/components/layout/SiteShe
 import { VideoReel } from "@/components/media/VideoReel";
 import { captacoes } from "@/data/videos";
 import { cases } from "@/data/cases";
-import { breadcrumbLd, pageHead } from "@/lib/seo";
+import { absUrl, breadcrumbLd, pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/cases/")({
   head: () =>
@@ -15,7 +15,15 @@ export const Route = createFileRoute("/cases/")({
       description:
         "Portfólio da Ello por nicho: varejo e alimentício, alimentício, indústria e construção civil. Veja as peças criadas para cada cliente e o case da própria Ello.",
       path: "/cases",
-      jsonLd: [breadcrumbLd([{ name: "Início", path: "/" }, { name: "Cases", path: "/cases" }])],
+      jsonLd: [
+        breadcrumbLd([{ name: "Início", path: "/" }, { name: "Cases", path: "/cases" }]),
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Cases e portfólio da Ello Táticas Digitais",
+          itemListElement: cases.map((c, i) => ({ "@type": "ListItem", position: i + 1, name: `${c.client} — ${c.headline}`, url: absUrl(`/cases/${c.slug}`) })),
+        },
+      ],
     }),
   component: CasesHub,
 });

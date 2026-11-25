@@ -7,20 +7,27 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Button } from "@/components/ui/button";
 import { fullAddress, site } from "@/data/site";
 import { track } from "@/lib/analytics";
+import { faqLd } from "@/lib/seo";
 import { whatsappLink, type WhatsAppTopic } from "@/lib/whatsapp";
 
 export function FaqList({ items }: { items: { q: string; a: string }[] }) {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd(items)) }} />
     <Accordion type="single" collapsible className="space-y-3">
       {items.map((f, i) => (
         <Reveal key={f.q} delay={i * 60}>
           <AccordionItem value={`item-${i}`} className="rounded-3xl border border-border bg-card px-6 shadow-soft transition-shadow data-[state=open]:shadow-lift">
             <AccordionTrigger className="py-5 text-left font-display text-lg font-bold hover:no-underline">{f.q}</AccordionTrigger>
-            <AccordionContent className="pb-5 text-base leading-relaxed text-muted-foreground">{f.a}</AccordionContent>
+            {/* forceMount: a resposta fica no HTML (Google e IAs leem), mas só aparece quando aberta */}
+            <AccordionContent forceMount className="pb-5 text-base leading-relaxed text-muted-foreground">
+              {f.a}
+            </AccordionContent>
           </AccordionItem>
         </Reveal>
       ))}
     </Accordion>
+    </>
   );
 }
 

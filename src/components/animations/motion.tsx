@@ -162,7 +162,7 @@ export function BlurBlobs({ tone = "ink", className }: { tone?: "ink" | "light";
 }
 
 /** Vertical roulette for the hero headline; screen readers get a static sentence. */
-export function RotatingWord({ words, interval = 2400 }: { words: string[]; interval?: number }) {
+export function RotatingWord({ words, interval = 2400, className = "text-sun" }: { words: string[]; interval?: number; className?: string }) {
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
   useEffect(() => {
@@ -173,7 +173,7 @@ export function RotatingWord({ words, interval = 2400 }: { words: string[]; inte
   }, [interval, paused, words.length]);
   return (
     <span
-      className="roulette text-sun"
+      className={cn("roulette", className)}
       aria-hidden="true"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
@@ -182,7 +182,7 @@ export function RotatingWord({ words, interval = 2400 }: { words: string[]; inte
         const prev = (i - 1 + words.length) % words.length;
         const state = idx === i ? "active" : idx === prev ? "past" : "next";
         return (
-          <span key={w} data-state={state}>
+          <span key={`${w}-${idx}`} data-state={state}>
             {w}
           </span>
         );

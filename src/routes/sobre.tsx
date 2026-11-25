@@ -8,7 +8,7 @@ import { PageHero, SectionHeading, SiteShell } from "@/components/layout/SiteShe
 import { AutoVideo } from "@/components/media/AutoVideo";
 import { Button } from "@/components/ui/button";
 import { stats } from "@/data/site";
-import { breadcrumbLd, pageHead } from "@/lib/seo";
+import { breadcrumbLd, organizationLd, pageHead } from "@/lib/seo";
 
 const principles = [
   { icon: Compass, title: "Direção, não entregável", text: "Vendemos o caminho para o objetivo — os entregáveis são consequência." },
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/sobre")({
       description:
         "Conheça a história da Ello Táticas Digitais, fundada por Melina e Lucas em Louveira-SP: visão 360° de branding, conteúdo, performance e automação.",
       path: "/sobre",
-      jsonLd: [breadcrumbLd([{ name: "Início", path: "/" }, { name: "Sobre", path: "/sobre" }])],
+      jsonLd: [breadcrumbLd([{ name: "Início", path: "/" }, { name: "Sobre", path: "/sobre" }]), { "@context": "https://schema.org", "@type": "AboutPage", name: "Sobre a Ello Táticas Digitais", about: organizationLd }],
     }),
   component: AboutPage,
 });

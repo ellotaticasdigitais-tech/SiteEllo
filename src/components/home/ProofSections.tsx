@@ -1,6 +1,6 @@
 import { BadgeCheck, MessageSquareQuote } from "lucide-react";
 
-import { Marquee, Reveal } from "@/components/animations/motion";
+import { Marquee, Reveal, RotatingWord } from "@/components/animations/motion";
 import { SectionHeading } from "@/components/layout/SiteShell";
 import { Button } from "@/components/ui/button";
 import { clientLogos, testimonials } from "@/data/content";
@@ -38,7 +38,12 @@ export function BrandsMarquee() {
     <section aria-labelledby="marcas" className="bg-paper py-16">
       <div className="container-site mb-8 text-center">
         <p className="eyebrow">Prova real</p>
-        <h2 id="marcas" className="display-md mt-2">Marcas que já cresceram com a Ello</h2>
+        <h2 id="marcas" className="display-md mt-2">
+          <span className="sr-only">Marcas que crescem e cresceram com a Ello</span>
+          <span aria-hidden="true">
+            Marcas que <RotatingWord words={["crescem", "cresceram", "crescem", "cresceram"]} interval={2200} className="justify-items-center text-violet" /> com a Ello
+          </span>
+        </h2>
       </div>
       <Marquee duration={60}>
         {clientLogos.map((c, i) => (

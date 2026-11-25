@@ -6,6 +6,9 @@
 export const site = {
   name: "Ello Táticas Digitais",
   shortName: "Ello",
+  /** Endereço oficial do site (usado em links canônicos, sitemap e dados estruturados). */
+  url: "https://www.ellotaticasdigitais.com.br",
+  instagram: "ellotaticasdigitais",
   tagline: "Planejar, criar, conectar e converter.",
   description:
     "Agência de crescimento digital em Louveira-SP que integra estratégia, branding, conteúdo, tráfego pago, tecnologia, automação com IA e vendas para empresas de todo o Brasil.",
@@ -27,8 +30,8 @@ export const site = {
     "https://www.google.com/maps/search/?api=1&query=R.+Dr.+Jos%C3%A9+Romeiro+Pereira%2C+300%2C+Louveira+-+SP%2C+13290-266",
   /** CNPJ not provided in the materials yet. Leave null until validated. */
   cnpj: null as string | null,
-  /** Official social profiles not provided yet. Add URLs when confirmed. */
-  social: [] as { label: string; href: string }[],
+  /** Perfis oficiais. */
+  social: [{ label: "Instagram", href: "https://www.instagram.com/ellotaticasdigitais/" }] as { label: string; href: string }[],
   areaServed: "Louveira, Jundiaí, Vinhedo, Valinhos, Campinas e todo o Brasil",
 } as const;
 

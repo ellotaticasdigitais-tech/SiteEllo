@@ -7,16 +7,43 @@ import { PlansCards } from "@/components/home/OfferSections";
 import { PageHero, SectionHeading, SiteShell } from "@/components/layout/SiteShell";
 import { homeFaq } from "@/data/faq";
 import { formatBRL, planAddon, planIncludes, planMatrix, plans } from "@/data/plans";
-import { breadcrumbLd, pageHead } from "@/lib/seo";
+import { absUrl, breadcrumbLd, pageHead } from "@/lib/seo";
+import { site } from "@/data/site";
 
 export const Route = createFileRoute("/planos")({
   head: () =>
     pageHead({
       title: "Planos Ello Performance, Expansão e Conexão — Ello",
       description:
-        "Planos da Ello a partir de R$ 2.080/mês: Performance (tráfego, CRM RD Station, dashboard e Ello Lab), Expansão (+ redes sociais, captação e concorrência) e Conexão (inbound e automação).",
+        "Planos de marketing digital a partir de R$ 2.080/mês: Ello Performance, Expansão e Conexão. Tráfego pago, redes sociais, CRM RD Station e automação.",
       path: "/planos",
-      jsonLd: [breadcrumbLd([{ name: "Início", path: "/" }, { name: "Planos", path: "/planos" }])],
+      jsonLd: [
+        breadcrumbLd([{ name: "Início", path: "/" }, { name: "Planos", path: "/planos" }]),
+        {
+          "@context": "https://schema.org",
+          "@type": "OfferCatalog",
+          name: "Planos de marketing digital da Ello",
+          url: absUrl("/planos"),
+          itemListElement: plans.map((p) => ({
+            "@type": "Offer",
+            name: p.name,
+            description: `${p.tagline} Inclui: ${p.items.map((i) => i.title).join(", ")}.`,
+            url: absUrl(`/contato?plano=${p.id}`),
+            seller: { "@type": "Organization", name: site.name, url: site.url },
+            ...(p.prices
+              ? {
+                  priceCurrency: "BRL",
+                  price: p.prices.mensal.monthly,
+                  priceSpecification: [
+                    { "@type": "UnitPriceSpecification", price: p.prices.mensal.monthly, priceCurrency: "BRL", unitText: "mês", name: "Mensal" },
+                    { "@type": "UnitPriceSpecification", price: p.prices.semestral.monthly, priceCurrency: "BRL", unitText: "mês", name: "Semestral" },
+                    { "@type": "UnitPriceSpecification", price: p.prices.anual.monthly, priceCurrency: "BRL", unitText: "mês", name: "Anual" },
+                  ],
+                }
+              : {}),
+          })),
+        },
+      ],
     }),
   component: PlansPage,
 });

@@ -338,7 +338,7 @@ function CaseScreen({ c, active }: { c: SuccessCase; active: boolean }) {
     <div
       aria-hidden={!active}
       className={cn(
-        "absolute inset-0 grid grid-cols-[1.1fr_1fr] gap-4 bg-ink-pattern p-5 transition-all duration-700 sm:p-9",
+        "absolute inset-0 grid grid-cols-1 gap-4 bg-ink-pattern p-4 transition-all duration-700 sm:grid-cols-[1.1fr_1fr] sm:p-9",
         active ? "translate-x-0 opacity-100" : "pointer-events-none translate-x-8 opacity-0",
       )}
     >
@@ -360,7 +360,7 @@ function CaseScreen({ c, active }: { c: SuccessCase; active: boolean }) {
           Ver case <ArrowUpRight className="size-4" />
         </Link>
       </div>
-      <div className="relative">
+      <div className="relative hidden sm:block">
         {shots.length > 0 ? (
           shots.map((s, k) => (
             <img
