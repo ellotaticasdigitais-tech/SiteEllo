@@ -19,9 +19,9 @@ describe("WhatsApp", () => {
 });
 
 describe("Formulário diagnóstico", () => {
-  const valid = { name: "Ana", company: "Loja X", whatsapp: "(19) 99865-0372", objective: "Gerar mais leads e vendas", consent: true };
+  const valid = { name: "Ana", company: "Loja X", email: "ana@lojax.com.br", whatsapp: "(19) 99865-0372", objective: "Gerar mais leads e vendas", consent: true };
 
-  it("accepts nome, empresa, WhatsApp e objetivo", () => {
+  it("accepts nome, empresa, e-mail, WhatsApp e objetivo", () => {
     const r = diagnosticoSchema.safeParse(valid);
     expect(r.success).toBe(true);
     expect(r.success && r.data.whatsapp).toBe("19998650372");
@@ -44,11 +44,12 @@ describe("Cadastro Ello Lab", () => {
 });
 
 describe("Contato comercial", () => {
-  it("accepts either an e-mail or a WhatsApp in the same field", () => {
+  it("requires an e-mail (needed by RD Station) and accepts an optional WhatsApp", () => {
     const base = { name: "Ana", service_interest: "Tráfego Pago", message: "Quero crescer", consent: true };
-    expect(contatoSchema.safeParse({ ...base, contact: "ana@empresa.com.br" }).success).toBe(true);
-    expect(contatoSchema.safeParse({ ...base, contact: "(19) 99865-0372" }).success).toBe(true);
-    expect(contatoSchema.safeParse({ ...base, contact: "abc" }).success).toBe(false);
+    expect(contatoSchema.safeParse({ ...base, email: "ana@empresa.com.br" }).success).toBe(true);
+    expect(contatoSchema.safeParse({ ...base, email: "ana@empresa.com.br", whatsapp: "(19) 99865-0372" }).success).toBe(true);
+    expect(contatoSchema.safeParse({ ...base, email: "abc" }).success).toBe(false);
+    expect(contatoSchema.safeParse({ ...base, email: "ana@empresa.com.br", whatsapp: "123" }).success).toBe(false);
   });
 });
 

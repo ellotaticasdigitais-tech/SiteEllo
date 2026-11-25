@@ -16,6 +16,7 @@ export function DiagnosticForm({ origin = "home_diagnostico", tone = "light" as 
       fields={[
         { name: "name", label: "Nome", type: "text", autoComplete: "name", placeholder: "Seu nome" },
         { name: "company", label: "Empresa", type: "text", autoComplete: "organization", placeholder: "Nome da empresa" },
+        { name: "email", label: "E-mail", type: "email", autoComplete: "email", placeholder: "voce@empresa.com.br" },
         { name: "whatsapp", label: "WhatsApp", type: "tel", autoComplete: "tel", placeholder: "(19) 99999-9999" },
         { name: "objective", label: "Principal objetivo", type: "select", options: diagnosticObjectives },
       ]}
@@ -56,7 +57,8 @@ export function ContactForm({ origin = "contato" }: { origin?: string }) {
       successText="Recebemos sua mensagem e vamos responder pelo canal informado."
       fields={[
         { name: "name", label: "Nome", type: "text", autoComplete: "name" },
-        { name: "contact", label: "E-mail ou WhatsApp", type: "text", autoComplete: "email", placeholder: "voce@empresa.com.br ou (19) 99999-9999" },
+        { name: "email", label: "E-mail", type: "email", autoComplete: "email", placeholder: "voce@empresa.com.br" },
+        { name: "whatsapp", label: "WhatsApp", type: "tel", autoComplete: "tel", placeholder: "(19) 99999-9999", optional: true },
         { name: "service_interest", label: "Serviço de interesse", type: "select", options: [...coreServices.map((s) => s.name), "Ello IA", "Ello Lab", "Planos", "Ainda não sei"] },
         { name: "message", label: "Mensagem", type: "textarea", placeholder: "Conte um pouco sobre sua empresa e seu objetivo" },
       ]}
@@ -97,6 +99,7 @@ export function ServiceForm({ slug, serviceName, topic }: { slug: string; servic
       successText="Um especialista da Ello vai chamar você no WhatsApp."
       fields={[
         { name: "name", label: "Nome", type: "text", autoComplete: "name" },
+        { name: "email", label: "E-mail", type: "email", autoComplete: "email", placeholder: "voce@empresa.com.br" },
         { name: "whatsapp", label: "WhatsApp", type: "tel", autoComplete: "tel", placeholder: "(19) 99999-9999" },
         { name: "company", label: "Empresa", type: "text", autoComplete: "organization", optional: true },
       ]}

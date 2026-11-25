@@ -11,9 +11,18 @@ export const whatsapp = z
   .refine((v) => /^\d{10,11}$/.test(v), "Informe um WhatsApp com DDD");
 const consent = z.literal(true, { errorMap: () => ({ message: "É preciso concordar com a Política de Privacidade" }) });
 
+/** WhatsApp opcional: vazio é aceito; se preenchido, precisa ter DDD. */
+const optionalWhatsapp = z
+  .string()
+  .trim()
+  .transform((v) => v.replace(/\D/g, "").replace(/^55(?=\d{10,11}$)/, ""))
+  .refine((v) => v === "" || /^\d{10,11}$/.test(v), "Informe um WhatsApp com DDD")
+  .optional();
+
 export const diagnosticoSchema = z.object({
   name,
   company,
+  email,
   whatsapp,
   objective: z.string().trim().min(2, "Escolha o principal objetivo").max(120),
   consent,
@@ -30,15 +39,8 @@ export const labSchema = z.object({
 
 export const contatoSchema = z.object({
   name,
-  contact: z
-    .string()
-    .trim()
-    .min(5, "Informe um e-mail ou WhatsApp")
-    .max(255)
-    .refine(
-      (v) => z.string().email().safeParse(v).success || /^\+?[\d\s().-]{10,18}$/.test(v),
-      "Informe um e-mail ou WhatsApp válido",
-    ),
+  email,
+  whatsapp: optionalWhatsapp,
   service_interest: z.string().trim().min(2, "Escolha um serviço").max(120),
   message: z.string().trim().min(5, "Escreva uma mensagem curta").max(1500, "Use até 1500 caracteres"),
   consent,
@@ -53,6 +55,7 @@ export const crmSchema = z.object({
 
 export const servicoSchema = z.object({
   name,
+  email,
   whatsapp,
   company: z.string().trim().max(120).optional().or(z.literal("")),
   consent,

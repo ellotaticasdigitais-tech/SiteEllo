@@ -1,3 +1,5 @@
+import { site } from "@/data/site";
+
 import { getConsent } from "./consent";
 
 /**
@@ -14,7 +16,8 @@ export type AnalyticsEvent =
   | "plan_click"
   | "case_view"
   | "ello_lab_signup"
-  | "commercial_conversion";
+  | "commercial_conversion"
+  | "ello_lead";
 
 type Params = Record<string, string | number | boolean | undefined>;
 
@@ -36,7 +39,7 @@ let gtmLoaded = false;
 
 /** Loads Google Tag Manager once, only after consent and only when an ID is configured. */
 export function loadGtm() {
-  const id = import.meta.env["VITE_GTM_ID"] as string | undefined;
+  const id = (import.meta.env["VITE_GTM_ID"] as string | undefined) || site.gtmId;
   if (gtmLoaded || !id || typeof document === "undefined") return;
   if (!getConsent()?.analytics) return;
   gtmLoaded = true;

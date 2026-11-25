@@ -108,6 +108,21 @@ export function LeadForm({
         setStatus({ kind: "success" });
         reset();
         track("form_submit_success", { form: formType, origin });
+        // Lead completo para o Google Tag Manager (de lá vai para o RD Station).
+        const v = (k: string) => (typeof values[k as keyof typeof values] === "string" ? (values[k as keyof typeof values] as string) : undefined);
+        track("ello_lead", {
+          form: formType,
+          origin,
+          conversion_identifier: `site-ello-${formType}`,
+          lead_name: v("name"),
+          lead_email: v("email"),
+          lead_phone: v("whatsapp"),
+          lead_company: v("company"),
+          lead_objective: v("objective"),
+          lead_service: v("service_interest") ?? serviceSlug,
+          lead_revenue: v("revenue_range"),
+          lead_message: v("message"),
+        });
         if (formType === "ello_lab") track("ello_lab_signup", { origin });
         else track("commercial_conversion", { form: formType, origin });
       } else {
