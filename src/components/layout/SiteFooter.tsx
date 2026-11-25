@@ -1,7 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Building2, Mail, MapPin, Phone } from "lucide-react";
 
 import { Logo } from "@/components/brand/Logo";
+import { SocialIcon } from "@/components/brand/SocialIcons";
+import { WhatsAppIcon } from "@/components/layout/WhatsAppFloat";
+import { whatsappLink } from "@/lib/whatsapp";
 import { coreServices } from "@/data/services";
 import { fullAddress, site } from "@/data/site";
 import { openCookiePreferences } from "@/lib/consent";
@@ -14,13 +17,19 @@ export function SiteFooter() {
         <div className="space-y-5">
           <Logo tone="light" />
           <p className="max-w-xs text-sm leading-relaxed text-ink-muted">
-            Empresa de crescimento empresarial — estratégia, conteúdo, tráfego e tecnologia. {site.tagline}
+            Empresa de crescimento empresarial: estratégia, conteúdo, tráfego e tecnologia. {site.tagline}
           </p>
           <ul className="space-y-3 text-sm">
             <li className="flex gap-3">
               <MapPin className="mt-0.5 size-4 shrink-0 text-sun" />
               <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer" className="text-ink-foreground/85 hover:text-sun">
                 {fullAddress}
+              </a>
+            </li>
+            <li className="flex gap-3">
+              <WhatsAppIcon className="mt-0.5 size-4 shrink-0 text-sun" />
+              <a href={whatsappLink("geral")} target="_blank" rel="noopener noreferrer" className="text-ink-foreground/85 hover:text-sun">
+                WhatsApp {site.whatsappDisplay}
               </a>
             </li>
             <li className="flex gap-3">
@@ -36,17 +45,25 @@ export function SiteFooter() {
               </a>
             </li>
           </ul>
-          {site.social.length > 0 && (
-            <ul className="flex gap-3">
+          <div>
+            <p className="eyebrow eyebrow-on-ink mb-3 font-sans">Siga a Ello</p>
+            <ul className="flex flex-wrap gap-2.5">
               {site.social.map((s) => (
                 <li key={s.href}>
-                  <a href={s.href} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold hover:text-sun">
-                    {s.label}
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Ello no ${s.label}`}
+                    title={s.label}
+                    className="grid h-11 w-11 place-items-center rounded-full bg-ink-foreground/10 text-ink-foreground transition-colors hover:bg-sun hover:text-ink"
+                  >
+                    <SocialIcon id={s.id} className="size-5" />
                   </a>
                 </li>
               ))}
             </ul>
-          )}
+          </div>
         </div>
 
         <FooterCol title="Serviços">
@@ -84,9 +101,11 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-ink-foreground/10">
         <div className="container-site flex flex-col gap-2 py-6 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {year} {site.name}
-            {site.cnpj ? ` · CNPJ ${site.cnpj}` : ""} — feito pela própria Ello.
+          <p className="flex items-start gap-2">
+            <Building2 className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
+            <span>
+              © {year} {site.legalName} · CNPJ {site.cnpj}
+            </span>
           </p>
           <p>Louveira-SP · atendimento em todo o Brasil</p>
         </div>

@@ -20,8 +20,8 @@ export const Route = createFileRoute("/contato")({
   }),
   head: () =>
     pageHead({
-      title: "Contato — fale com a Ello Táticas Digitais",
-      description: `Fale com a Ello pelo WhatsApp ${site.phoneDisplay}, e-mail ou formulário. Agência de marketing digital em Louveira-SP, atendendo todo o Brasil.`,
+      title: "Contato | fale com a Ello Táticas Digitais",
+      description: `Fale com a Ello pelo WhatsApp ${site.whatsappDisplay}, e-mail ou formulário. Agência de marketing digital em Louveira-SP, atendendo todo o Brasil.`,
       path: "/contato",
       jsonLd: [professionalServiceLd, breadcrumbLd([{ name: "Início", path: "/" }, { name: "Contato", path: "/contato" }])],
     }),
@@ -63,7 +63,7 @@ function ContactPage() {
               <p className="mt-2 text-ink-foreground/80">Mensagem pronta, é só enviar.</p>
               <Button asChild variant="whatsapp" size="lg" className="mt-6 w-full">
                 <a href={whatsappLink(plan ? "planos" : "geral")} target="_blank" rel="noopener noreferrer" onClick={() => track("whatsapp_click", { location: "contato" })}>
-                  <WhatsAppIcon className="size-5" /> {site.phoneDisplay}
+                  <WhatsAppIcon className="size-5" /> {site.whatsappDisplay}
                 </a>
               </Button>
             </Reveal>

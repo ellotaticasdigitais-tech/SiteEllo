@@ -7,7 +7,7 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/termos-de-uso")({
   head: () =>
     pageHead({
-      title: "Termos de Uso — Ello Táticas Digitais",
+      title: "Termos de Uso | Ello Táticas Digitais",
       description: "Condições de uso do site da Ello Táticas Digitais, conteúdos, propriedade intelectual e responsabilidades.",
       path: "/termos-de-uso",
     }),

@@ -30,7 +30,7 @@ export function ServicesGrid({ withHeading = true }: { withHeading?: boolean }) 
         <SectionHeading
           eyebrow="O que fazemos"
           title="Assessoria 360° no digital"
-          lead="Cada serviço tem sua própria página, focada em uma única ação — para você ir direto ao que precisa."
+          lead="Cada serviço tem sua própria página, focada em uma única ação, para você ir direto ao que precisa."
         />
       )}
       <ul className={cn("grid gap-5 sm:grid-cols-2 lg:grid-cols-4", withHeading && "mt-14")}>
@@ -79,7 +79,7 @@ export function TechSection() {
     <section aria-labelledby="tecnologia" className="section-y relative overflow-hidden bg-cream">
       <div className="container-site">
         <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
-          <SectionHeading eyebrow="Diferencial — não é só agência" title={<span id="tecnologia">Tecnologia própria da Ello</span>} />
+          <SectionHeading eyebrow="Diferencial: não é só agência" title={<span id="tecnologia">Tecnologia própria da Ello</span>} />
           <Reveal variant="right" className="hidden lg:block">
             <img src="/luma/luma-pensando.webp" alt="" aria-hidden="true" width={643} height={900} loading="lazy" className="w-36 drop-shadow-xl" />
           </Reveal>
@@ -94,7 +94,7 @@ export function TechSection() {
                 </span>
                 <h3 className="display-md mt-5">Ello IA</h3>
                 <p className="lead mt-3 text-ink-foreground/80">
-                  CRM com atendimento por IA 24/7 no WhatsApp — qualifica, conduz e vende, com humano assumindo quando precisar.
+                  CRM com atendimento por IA 24/7 no WhatsApp: qualifica, conduz e vende, com humano assumindo quando precisar.
                 </p>
                 <ChatMock />
                 <Button asChild variant="sun" size="lg" className="mt-8">
@@ -113,7 +113,7 @@ export function TechSection() {
                 </span>
                 <h3 className="display-md mt-5">Ello CRM</h3>
                 <p className="lead mt-3 text-muted-foreground">
-                  CRM próprio da Ello, com integração a WhatsApp Web, kanban de atendimento e funil comercial — ainda em construção, sem data de
+                  CRM próprio da Ello, com integração a WhatsApp Web, kanban de atendimento e funil comercial, ainda em construção, sem data de
                   lançamento confirmada.
                 </p>
                 <KanbanMock />

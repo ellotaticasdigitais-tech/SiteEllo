@@ -14,28 +14,33 @@ export const site = {
     "Agência de crescimento digital em Louveira-SP que integra estratégia, branding, conteúdo, tráfego pago, tecnologia, automação com IA e vendas para empresas de todo o Brasil.",
   phoneDisplay: "(19) 99865-0372",
   phoneE164: "+5519998650372",
-  whatsappNumber: "5519998650372",
+  /** WhatsApp da Luma SDR: todos os botões de WhatsApp do site levam para cá. */
+  whatsappNumber: "5519936295679",
+  whatsappDisplay: "(19) 93629-5679",
   /** Grupo da comunidade Ello Lab no WhatsApp. */
   communityUrl: "https://chat.whatsapp.com/EwzXvTYJD6JI6m4edy9Tve",
   email: "comercial@ellotaticasdigitais.com.br",
   address: {
-    street: "R. Dr. José Romeiro Pereira, 300 — Sala 03",
-    district: "Vila Nova Louveira",
+    street: "Rua Nicola Taralo, 300, Sala 3",
     city: "Louveira",
     state: "SP",
-    postalCode: "13290-266",
     country: "BR",
   },
-  mapsUrl:
-    "https://www.google.com/maps/search/?api=1&query=R.+Dr.+Jos%C3%A9+Romeiro+Pereira%2C+300%2C+Louveira+-+SP%2C+13290-266",
-  /** CNPJ not provided in the materials yet. Leave null until validated. */
-  cnpj: null as string | null,
-  /** Perfis oficiais. */
-  social: [{ label: "Instagram", href: "https://www.instagram.com/ellotaticasdigitais/" }] as { label: string; href: string }[],
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Rua+Nicola+Taralo%2C+300%2C+Louveira+-+SP",
+  legalName: "Ello Táticas Digitais Ltda. ME",
+  cnpj: "29.353.002/0001-46",
+  /** Perfis oficiais (rodapé, dados estruturados e llms.txt). */
+  social: [
+    { id: "instagram", label: "Instagram", href: "https://www.instagram.com/ellotaticasdigitais/" },
+    { id: "facebook", label: "Facebook", href: "https://www.facebook.com/ElloTaticasDigitais/" },
+    { id: "youtube", label: "YouTube", href: "https://www.youtube.com/@ElloTaticasDigitais" },
+    { id: "tiktok", label: "TikTok", href: "https://www.tiktok.com/@ellotaticasdigitais" },
+    { id: "pinterest", label: "Pinterest", href: "https://br.pinterest.com/ellotaticasdigitais/" },
+  ] as { id: "instagram" | "facebook" | "youtube" | "tiktok" | "pinterest"; label: string; href: string }[],
   areaServed: "Louveira, Jundiaí, Vinhedo, Valinhos, Campinas e todo o Brasil",
 } as const;
 
-export const fullAddress = `${site.address.street}, ${site.address.district}, ${site.address.city}-${site.address.state}, CEP ${site.address.postalCode}`;
+export const fullAddress = `${site.address.street}, ${site.address.city}-${site.address.state}`;
 
 /** Credibility indicators from the wireframe — to validate before publishing. */
 export const stats = [
@@ -74,10 +79,10 @@ export const comparison = [
 export const onboarding = [
   { day: "Dia 1", title: "Kick-off" },
   { day: "Dia 2", title: "Briefing" },
-  { day: "Dias 3–5", title: "Setup de estrutura" },
-  { day: "Dias 5–8", title: "Alinhamento" },
-  { day: "Dias 8–12", title: "Captação e criativos" },
-  { day: "Dias 12–18", title: "Configurações finais" },
+  { day: "Dias 3 a 5", title: "Setup de estrutura" },
+  { day: "Dias 5 a 8", title: "Alinhamento" },
+  { day: "Dias 8 a 12", title: "Captação e criativos" },
+  { day: "Dias 12 a 18", title: "Configurações finais" },
   { day: "Dia 20", title: "Start de performance" },
 ];
 
@@ -93,7 +98,7 @@ export const pillars = [
   {
     letter: "2",
     title: "Conteúdo e Relacionamento",
-    short: "Conteúdo com função na jornada — topo, meio e fundo de funil.",
+    short: "Conteúdo com função na jornada: topo, meio e fundo de funil.",
     detail:
       "Conteúdo não é volume de posts: é cada peça cumprindo uma função na jornada do cliente. Planejamos redes sociais, vídeo e inbound para atrair, educar e preparar a decisão de compra.",
     services: ["gestao-de-redes-sociais", "captacao-e-edicao-de-video", "inbound-marketing"],
@@ -109,7 +114,7 @@ export const pillars = [
   {
     letter: "4",
     title: "Vendas e Atendimento com IA",
-    short: "Ello IA qualifica, conduz e vende 24/7 — humano assume quando precisa.",
+    short: "Ello IA qualifica, conduz e vende 24/7, e um humano assume quando precisa.",
     detail:
       "O lead gerado precisa ser atendido rápido. A Ello IA responde no WhatsApp 24 horas por dia, qualifica e conduz a conversa, e a equipe humana assume quando o momento pede.",
     services: ["ello-ia"],

@@ -25,7 +25,7 @@ export const Route = createFileRoute("/servicos/$slug")({
     return { service };
   },
   head: ({ loaderData, params }) => {
-    if (!loaderData) return pageHead({ title: "Serviço não encontrado — Ello", description: "Página indisponível.", path: `/servicos/${params.slug}`, noindex: true });
+    if (!loaderData) return pageHead({ title: "Serviço não encontrado | Ello", description: "Página indisponível.", path: `/servicos/${params.slug}`, noindex: true });
     const s = loaderData.service;
     return pageHead({
       title: s.seoTitle,

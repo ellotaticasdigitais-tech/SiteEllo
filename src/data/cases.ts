@@ -85,7 +85,7 @@ export const cases: SuccessCase[] = [
     accent: "#008345",
     headline: "Uma rede de supermercados presente o mês inteiro",
     summary:
-      "Planejamento mensal de conteúdo, calendário promocional, stories e campanhas sazonais — além de mascote 3D e do programa interno de cultura Somos Central.",
+      "Planejamento mensal de conteúdo, calendário promocional, stories e campanhas sazonais, além de mascote 3D e do programa interno de cultura Somos Central.",
     delivered: [
       "Planejamento e calendário mensal de conteúdo",
       "Stories e direcionamento diário de ofertas",
@@ -157,7 +157,7 @@ export const cases: SuccessCase[] = [
     accent: "#169B45",
     headline: "Equipamentos de reciclagem explicados para quem decide a compra",
     summary:
-      "Conteúdo técnico e comercial para uma fabricante de equipamentos de reciclagem: linhas de produto, comparativos e chamadas para decisão — além de fotos editadas e apoio ao site.",
+      "Conteúdo técnico e comercial para uma fabricante de equipamentos de reciclagem: linhas de produto, comparativos e chamadas para decisão, além de fotos editadas e apoio ao site.",
     delivered: ["Posts técnicos de produto e comparativos", "Campanhas comerciais mensais", "Edição de fotos dos equipamentos", "Apoio ao conteúdo do site e blog"],
     services: ["gestao-de-redes-sociais", "sites-e-landing-pages"],
     creatives: [

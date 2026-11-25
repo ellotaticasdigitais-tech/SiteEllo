@@ -11,7 +11,7 @@ import { stats } from "@/data/site";
 import { breadcrumbLd, organizationLd, pageHead } from "@/lib/seo";
 
 const principles = [
-  { icon: Compass, title: "Direção, não entregável", text: "Vendemos o caminho para o objetivo — os entregáveis são consequência." },
+  { icon: Compass, title: "Direção, não entregável", text: "Vendemos o caminho para o objetivo; os entregáveis são consequência." },
   { icon: LineChart, title: "Leitura de negócio", text: "Relatório que explica o porquê do número, nunca métrica de vaidade." },
   { icon: Target, title: "Objetivo primeiro", text: "O criativo nasce do objetivo, e não o contrário." },
   { icon: Handshake, title: "Senta junto", text: "Proximidade real com o cliente, não só troca de e-mails." },
@@ -21,7 +21,7 @@ const principles = [
 export const Route = createFileRoute("/sobre")({
   head: () =>
     pageHead({
-      title: "Sobre a Ello — Melina, Lucas e uma agência que pensa negócio",
+      title: "Sobre a Ello | Melina, Lucas e uma agência que pensa negócio",
       description:
         "Conheça a história da Ello Táticas Digitais, fundada por Melina e Lucas em Louveira-SP: visão 360° de branding, conteúdo, performance e automação.",
       path: "/sobre",
@@ -38,7 +38,7 @@ function AboutPage() {
         eyebrow="Sobre a Ello"
         title={
           <>
-            Uma agência que entende de <span className="text-sun">negócio</span> — e domina o digital
+            Uma agência que entende de <span className="text-sun">negócio</span> e domina o digital
           </>
         }
         lead="A Ello nasceu em Louveira-SP para profissionalizar o digital de empresas de todo o Brasil, do planejamento à venda. A Ello não vende apenas posts: conecta marketing, relacionamento, tecnologia e vendas."
@@ -108,7 +108,7 @@ const espaco: GalleryItem[] = [
   { kind: "foto", src: "/espaco/fachada.webp", alt: "Fachada da Ello Táticas Digitais em Louveira-SP", w: 1280, h: 960, caption: "Nossa sede em Louveira-SP" },
   { kind: "video", src: "/videos/bastidores-1.mp4", poster: "/videos/bastidores-1.jpg", alt: "Bastidores: planejamento de conteúdo no workflow da Ello", caption: "Bastidores do planejamento" },
   { kind: "foto", src: "/espaco/vitrine.webp", alt: "Vitrine da Ello com o lema planejar, criar, conectar e converter", w: 1280, h: 960 },
-  { kind: "foto", src: "/espaco/porta.webp", alt: "Porta de entrada da Ello com a logo e contatos", w: 960, h: 1280, caption: "Sala 03 — pode vir tomar um café" },
+  { kind: "foto", src: "/espaco/porta.webp", alt: "Porta de entrada da Ello com a logo e contatos", w: 960, h: 1280, caption: "Sala 3: pode vir tomar um café" },
   { kind: "video", src: "/videos/bastidores-2.mp4", poster: "/videos/bastidores-2.jpg", alt: "Bastidores: revisão de publicação no Instagram", caption: "Conteúdo revisado post a post" },
   { kind: "foto", src: "/espaco/escritorio-mesas.webp", alt: "Estações de trabalho do escritório da Ello", w: 960, h: 1280 },
   { kind: "foto", src: "/espaco/fachada-rua.webp", alt: "Vista da rua do prédio onde fica a Ello", w: 1280, h: 960 },

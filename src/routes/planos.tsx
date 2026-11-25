@@ -13,7 +13,7 @@ import { site } from "@/data/site";
 export const Route = createFileRoute("/planos")({
   head: () =>
     pageHead({
-      title: "Planos Ello Performance, Expansão e Conexão — Ello",
+      title: "Planos Ello Performance, Expansão e Conexão | Ello",
       description:
         "Planos de marketing digital a partir de R$ 2.080/mês: Ello Performance, Expansão e Conexão. Tráfego pago, redes sociais, CRM RD Station e automação.",
       path: "/planos",
@@ -59,7 +59,7 @@ function PlansPage() {
             Três planos, pensados para cada <span className="text-sun">fase</span> do seu negócio
           </>
         }
-        lead="Valores claros, sem letra miúda. Escolha entre mensal, semestral ou anual — no anual, o setup inicial é gratuito e você economiza 20%."
+        lead="Valores claros, sem letra miúda. Escolha entre mensal, semestral ou anual. No anual, o setup inicial é gratuito e você economiza 20%."
       />
 
       <section className="section-y bg-paper">

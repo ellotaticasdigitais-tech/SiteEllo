@@ -82,7 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#2A0C53" },
-      { title: "Ello Táticas Digitais — Agência de crescimento digital" },
+      { title: "Ello Táticas Digitais | Agência de crescimento digital" },
       {
         name: "description",
         content: "Branding, conteúdo, tráfego pago e automação com IA integrados em uma só estratégia. Louveira-SP e todo o Brasil.",

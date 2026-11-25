@@ -28,7 +28,7 @@ export function pageHead({ title, description, path, type = "website", noindex, 
     { property: "og:image", content: img },
     { property: "og:image:width", content: "1200" },
     { property: "og:image:height", content: "630" },
-    { property: "og:image:alt", content: "Ello Táticas Digitais — agência de crescimento digital" },
+    { property: "og:image:alt", content: "Ello Táticas Digitais, agência de crescimento digital" },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: title },
     { name: "twitter:description", content: description },
@@ -55,13 +55,12 @@ const postalAddress = {
   streetAddress: site.address.street,
   addressLocality: site.address.city,
   addressRegion: site.address.state,
-  postalCode: site.address.postalCode,
   addressCountry: site.address.country,
 };
 
 const founders = [
-  { "@type": "Person", name: "Melina", jobTitle: "Sócia-fundadora — estratégia, conteúdo, design e automação" },
-  { "@type": "Person", name: "Lucas", jobTitle: "Sócio-fundador — performance, tráfego pago e gestão" },
+  { "@type": "Person", name: "Melina", jobTitle: "Sócia-fundadora: estratégia, conteúdo, design e automação" },
+  { "@type": "Person", name: "Lucas", jobTitle: "Sócio-fundador: performance, tráfego pago e gestão" },
 ];
 
 export const organizationLd = {
@@ -69,6 +68,8 @@ export const organizationLd = {
   "@type": "Organization",
   "@id": `${site.url}/#organizacao`,
   name: site.name,
+  legalName: site.legalName,
+  taxID: site.cnpj,
   alternateName: ["Ello", "Ello Agência", "Ello Táticas"],
   url: site.url,
   logo: absUrl("/brand/ello-icon-512.png"),
@@ -111,7 +112,7 @@ export const professionalServiceLd = {
   description: site.description,
   telephone: site.phoneE164,
   email: site.email,
-  priceRange: "R$ 2.080 – R$ 4.950/mês",
+  priceRange: "R$ 2.080 a R$ 4.950/mês",
   areaServed: [
     ...["Louveira", "Jundiaí", "Vinhedo", "Valinhos", "Campinas", "Itatiba"].map((name) => ({ "@type": "City", name })),
     { "@type": "Country", name: "Brasil" },

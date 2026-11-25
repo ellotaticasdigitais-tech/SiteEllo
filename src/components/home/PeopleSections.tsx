@@ -48,7 +48,7 @@ export function Founders() {
         <div>
           <SectionHeading
             eyebrow="Quem somos"
-            title={<span id="quem-somos">Lucas e Melina — casados, sócios, pais do Enrico e do Miguel</span>}
+            title={<span id="quem-somos">Lucas e Melina: casados, sócios, pais do Enrico e do Miguel</span>}
           />
           <Reveal delay={120}>
             <div className="lead mt-6 space-y-4 text-muted-foreground">

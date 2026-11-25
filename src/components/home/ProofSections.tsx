@@ -89,7 +89,7 @@ export function Positioning() {
                 A maioria das agências vende “postar bonito”. <span className="text-gradient-brand">A Ello vende estratégia.</span>
               </span>
             }
-            lead="Presença digital profissional + relacionamento estratégico + tráfego qualificado + tecnologia de automação — tudo integrado, nunca ações soltas."
+            lead="Presença digital profissional + relacionamento estratégico + tráfego qualificado + tecnologia de automação: tudo integrado, nunca ações soltas."
           />
           <Reveal delay={200}>
             <p className="mt-8 font-display text-2xl font-bold text-plum">Tática que conecta ideias a resultado.</p>
@@ -153,7 +153,7 @@ export function Testimonials() {
           <Reveal className="mx-auto mt-12 max-w-2xl rounded-3xl border-2 border-dashed border-border bg-card p-8 text-center">
             <MessageSquareQuote className="mx-auto size-10 text-violet" aria-hidden="true" />
             <p className="mt-4 text-lg">
-              Estamos reunindo os depoimentos autorizados dos nossos clientes — avaliações do Google, mensagens e vídeos reais.
+              Estamos reunindo os depoimentos autorizados dos nossos clientes: avaliações do Google, mensagens e vídeos reais.
             </p>
             <p className="mt-2 text-muted-foreground">Quer falar com quem já trabalha com a Ello? Peça referências ao nosso time.</p>
             <Button asChild variant="ink" className="mt-6">

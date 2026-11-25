@@ -11,7 +11,7 @@ import { breadcrumbLd, pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/blog/")({
   head: () =>
     pageHead({
-      title: "Blog da Ello — marketing, tráfego, branding e IA",
+      title: "Blog da Ello | marketing, tráfego, branding e IA",
       description: "Artigos da Ello sobre tráfego pago, branding, conteúdo, inteligência artificial e vendas para empresas que querem crescer no digital.",
       path: "/blog",
       // Keep out of the index until the first real articles are published.
@@ -32,7 +32,7 @@ function BlogIndex() {
             Táticas para quem quer <span className="text-sun">crescer</span> no digital
           </>
         }
-        lead="Conteúdo direto ao ponto sobre marketing, vendas e tecnologia — escrito por quem executa todos os dias."
+        lead="Conteúdo direto ao ponto sobre marketing, vendas e tecnologia, escrito por quem executa todos os dias."
       />
       <section className="section-y bg-paper">
         <div className="container-site">

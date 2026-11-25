@@ -35,7 +35,7 @@ export function SiteHeader({ tone = "dark" }: { tone?: "dark" | "light" }) {
         Pular para o conteúdo
       </a>
       <div className="container-site grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 lg:grid-cols-[auto_1fr_auto]">
-        <Link to="/" aria-label="Ello Táticas Digitais — página inicial" className="min-w-0">
+        <Link to="/" aria-label="Ello Táticas Digitais, página inicial" className="min-w-0">
           <Logo tone={onDark ? "light" : "dark"} />
         </Link>
 

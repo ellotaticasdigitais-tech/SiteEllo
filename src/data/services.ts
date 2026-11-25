@@ -36,7 +36,7 @@ export const services: Service[] = [
     eyebrow: "DNA da Marca · Posicionamento",
     title: "Uma marca que sabe quem é vende com mais clareza.",
     subtitle:
-      "Definimos propósito, personalidade, tom de voz e diferenciais da sua empresa para que toda a comunicação fale a mesma língua — do Instagram à proposta comercial.",
+      "Definimos propósito, personalidade, tom de voz e diferenciais da sua empresa para que toda a comunicação fale a mesma língua, do Instagram à proposta comercial.",
     whatsappTopic: "branding",
     includes: [
       { title: "Propósito e posicionamento", text: "O porquê da sua empresa e o lugar que ela quer ocupar na mente do cliente." },
@@ -46,7 +46,7 @@ export const services: Service[] = [
     ],
     problem: {
       title: "Sem DNA definido, cada peça conta uma história diferente",
-      text: "Quando a marca não tem posicionamento claro, conteúdo, anúncios e atendimento passam mensagens desencontradas — e o cliente não entende por que escolher você.",
+      text: "Quando a marca não tem posicionamento claro, conteúdo, anúncios e atendimento passam mensagens desencontradas, e o cliente não entende por que escolher você.",
     },
     differentials: [
       { title: "Estratégia antes da estética", text: "O visual nasce do posicionamento, não o contrário." },
@@ -57,7 +57,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "O que é o DNA da Marca?",
-        a: "É o conjunto de definições estratégicas da sua empresa — propósito, personalidade, tom de voz e diferenciais. Ele orienta identidade visual, conteúdo, anúncios e atendimento para que tudo comunique a mesma proposta de valor.",
+        a: "É o conjunto de definições estratégicas da sua empresa: propósito, personalidade, tom de voz e diferenciais. Ele orienta identidade visual, conteúdo, anúncios e atendimento para que tudo comunique a mesma proposta de valor.",
       },
       {
         q: "Preciso do DNA da Marca antes da identidade visual?",
@@ -65,7 +65,7 @@ export const services: Service[] = [
       },
     ],
     ctaTitle: "Quer uma marca que comunica com clareza?",
-    seoTitle: "DNA da Marca e posicionamento — Ello Táticas Digitais",
+    seoTitle: "DNA da Marca e posicionamento | Ello Táticas Digitais",
     seoDescription:
       "Defina propósito, personalidade, tom de voz e diferenciais da sua empresa com a Ello, agência de crescimento digital em Louveira-SP.",
   },
@@ -76,7 +76,7 @@ export const services: Service[] = [
     eyebrow: "Identidade Visual · Branding",
     title: "Identidade visual que transmite confiança à primeira vista.",
     subtitle:
-      "Logotipo, paleta de cores, tipografia e brandbook pensados a partir do posicionamento da sua empresa — para uma presença profissional e consistente em todos os pontos de contato.",
+      "Logotipo, paleta de cores, tipografia e brandbook pensados a partir do posicionamento da sua empresa, para uma presença profissional e consistente em todos os pontos de contato.",
     whatsappTopic: "branding",
     includes: [
       { title: "Logotipo", text: "Marca principal e versões para diferentes aplicações." },
@@ -105,7 +105,7 @@ export const services: Service[] = [
       },
     ],
     ctaTitle: "Pronto para uma identidade à altura do seu negócio?",
-    seoTitle: "Identidade visual e branding — Ello Táticas Digitais",
+    seoTitle: "Identidade visual e branding | Ello Táticas Digitais",
     seoDescription:
       "Criação de logotipo, paleta, tipografia e brandbook com estratégia. Agência de branding em Louveira-SP que atende todo o Brasil.",
   },
@@ -116,7 +116,7 @@ export const services: Service[] = [
     eyebrow: "Sites · Landing Pages",
     title: "Sites e landing pages feitos para transformar visita em contato.",
     subtitle:
-      "Desenvolvemos sites institucionais e landing pages com foco em clareza, velocidade e conversão — preparados para SEO, anúncios e integração com seu CRM.",
+      "Desenvolvemos sites institucionais e landing pages com foco em clareza, velocidade e conversão, preparados para SEO, anúncios e integração com seu CRM.",
     whatsappTopic: "sites",
     includes: [
       { title: "Arquitetura e copy", text: "Estrutura de páginas e textos pensados para a decisão do cliente." },
@@ -126,7 +126,7 @@ export const services: Service[] = [
     ],
     problem: {
       title: "Site bonito que não gera contato é custo, não ativo",
-      text: "Sem estrutura de conversão, rastreamento e velocidade, o site vira vitrine parada — e a verba de anúncios escorre por uma página que não convence.",
+      text: "Sem estrutura de conversão, rastreamento e velocidade, o site vira vitrine parada, e a verba de anúncios escorre por uma página que não convence.",
     },
     differentials: [
       { title: "Conversão como objetivo", text: "Cada seção tem uma função clara na jornada." },
@@ -137,7 +137,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "Qual a diferença entre site institucional e landing page?",
-        a: "O site institucional apresenta a empresa como um todo, com várias páginas e caminhos. A landing page tem um único objetivo — como solicitar orçamento — e elimina distrações para aumentar a conversão de campanhas específicas.",
+        a: "O site institucional apresenta a empresa como um todo, com várias páginas e caminhos. A landing page tem um único objetivo (como solicitar orçamento) e elimina distrações para aumentar a conversão de campanhas específicas.",
       },
       {
         q: "O site já sai preparado para aparecer no Google?",
@@ -145,7 +145,7 @@ export const services: Service[] = [
       },
     ],
     ctaTitle: "Quer um site que trabalha a favor das suas vendas?",
-    seoTitle: "Criação de sites e landing pages — Ello Táticas Digitais",
+    seoTitle: "Criação de sites e landing pages | Ello Táticas Digitais",
     seoDescription:
       "Sites institucionais e landing pages de alta conversão, com SEO técnico e integração com CRM. Agência em Louveira-SP.",
   },
@@ -156,7 +156,7 @@ export const services: Service[] = [
     eyebrow: "Redes Sociais · Conteúdo",
     title: "Redes sociais com estratégia, não só posts bonitos.",
     subtitle:
-      "Planejamento, criação e gestão de conteúdo para Instagram, Facebook, LinkedIn, TikTok e Google Meu Negócio — cada publicação com uma função na jornada do seu cliente.",
+      "Planejamento, criação e gestão de conteúdo para Instagram, Facebook, LinkedIn, TikTok e Google Meu Negócio, cada publicação com uma função na jornada do seu cliente.",
     whatsappTopic: "geral",
     includes: [
       { title: "Planejamento editorial", text: "Calendário com temas e objetivos por etapa do funil." },
@@ -185,7 +185,7 @@ export const services: Service[] = [
       },
     ],
     ctaTitle: "Quer redes sociais que geram oportunidades?",
-    seoTitle: "Gestão de redes sociais — Ello Táticas Digitais",
+    seoTitle: "Gestão de redes sociais | Ello Táticas Digitais",
     seoDescription:
       "Gestão estratégica de Instagram, Facebook, LinkedIn, TikTok e Google Meu Negócio. Agência de marketing digital em Louveira-SP.",
   },
@@ -196,7 +196,7 @@ export const services: Service[] = [
     eyebrow: "Vídeo · Reels",
     title: "Vídeos que mostram as pessoas por trás da sua marca.",
     subtitle:
-      "Captação e edição profissional para reels, redes sociais e anúncios — conteúdo humanizado que aproxima, gera confiança e prende a atenção nos primeiros segundos.",
+      "Captação e edição profissional para reels, redes sociais e anúncios: conteúdo humanizado que aproxima, gera confiança e prende a atenção nos primeiros segundos.",
     whatsappTopic: "geral",
     includes: [
       { title: "Roteiro", text: "Ideias e roteiros alinhados ao objetivo de cada vídeo." },
@@ -225,7 +225,7 @@ export const services: Service[] = [
       },
     ],
     ctaTitle: "Vamos colocar sua marca em movimento?",
-    seoTitle: "Captação e edição de vídeo para redes sociais — Ello",
+    seoTitle: "Captação e edição de vídeo para redes sociais | Ello",
     seoDescription:
       "Produção profissional de reels e vídeos para redes sociais e anúncios em Louveira e região. Conheça a Ello Táticas Digitais.",
   },
@@ -241,7 +241,7 @@ export const services: Service[] = [
     highlights: [
       { value: "4 anos", label: "de Ello" },
       { value: "+R$500 mil", label: "geridos em anúncios" },
-      { value: "24–48h", label: "para 1ª campanha no ar" },
+      { value: "24 a 48h", label: "para 1ª campanha no ar" },
     ],
     includes: [
       { title: "Estratégia de campanha", text: "Público, verba e canal definidos por objetivo de negócio." },
@@ -251,7 +251,7 @@ export const services: Service[] = [
     ],
     problem: {
       title: "Campanha sem estratégia custa mais do que parece",
-      text: "Verba disputando entre vários objetivos ao mesmo tempo é o erro mais caro — e o mais comum — em gestão de tráfego sem uma estratégia por trás.",
+      text: "Verba disputando entre vários objetivos ao mesmo tempo é o erro mais caro (e o mais comum) em gestão de tráfego sem uma estratégia por trás.",
     },
     differentials: [
       { title: "+R$500 mil geridos", text: "Experiência prática em escalar campanhas com foco em resultado." },
@@ -274,7 +274,7 @@ export const services: Service[] = [
       },
     ],
     ctaTitle: "Quer parar de depender de sorte no tráfego pago?",
-    seoTitle: "Gestão de tráfego pago — Google Ads e Meta Ads | Ello",
+    seoTitle: "Gestão de tráfego pago | Google Ads e Meta Ads | Ello",
     seoDescription:
       "Gestão de tráfego pago com Google Ads, Meta Ads, LinkedIn e TikTok, dashboard em tempo real e CRM integrado. Agência em Louveira-SP.",
   },
@@ -283,7 +283,7 @@ export const services: Service[] = [
     name: "Inbound Marketing",
     short: "SEO, blog, automações, e-mail marketing e WhatsApp.",
     eyebrow: "Inbound · SEO e automação",
-    title: "Clientes que chegam até você — e uma jornada que conduz até a venda.",
+    title: "Clientes que chegam até você, e uma jornada que conduz até a venda.",
     subtitle:
       "SEO, blog, automações, e-mail marketing e WhatsApp integrados para atrair, nutrir e converter oportunidades com consistência, sem depender só de anúncios.",
     whatsappTopic: "geral",
@@ -294,7 +294,7 @@ export const services: Service[] = [
       { title: "WhatsApp", text: "Atendimento e réguas de relacionamento no canal preferido do cliente." },
     ],
     problem: {
-      title: "Lead que não é nutrido esfria — e vai para o concorrente",
+      title: "Lead que não é nutrido esfria e vai para o concorrente",
       text: "Nem todo contato está pronto para comprar hoje. Sem uma jornada de relacionamento, oportunidades valiosas se perdem entre o primeiro clique e a decisão.",
     },
     differentials: [
@@ -306,7 +306,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "O que é inbound marketing?",
-        a: "É a estratégia de atrair clientes com conteúdo relevante e conduzi-los por uma jornada de relacionamento — com SEO, blog, automações, e-mail e WhatsApp — até que estejam prontos para comprar.",
+        a: "É a estratégia de atrair clientes com conteúdo relevante e conduzi-los por uma jornada de relacionamento (com SEO, blog, automações, e-mail e WhatsApp) até que estejam prontos para comprar.",
       },
       {
         q: "Inbound substitui o tráfego pago?",
@@ -314,7 +314,7 @@ export const services: Service[] = [
       },
     ],
     ctaTitle: "Quer uma jornada que transforma contato em cliente?",
-    seoTitle: "Inbound marketing, SEO e automação — Ello Táticas Digitais",
+    seoTitle: "Inbound marketing, SEO e automação | Ello Táticas Digitais",
     seoDescription:
       "SEO, blog, automações, e-mail marketing e WhatsApp integrados. Inbound marketing com a Ello, agência em Louveira-SP.",
   },
@@ -323,7 +323,7 @@ export const services: Service[] = [
     name: "Consultoria Estratégica",
     short: "Direcionamento de marketing e vendas, com clareza e foco.",
     eyebrow: "Consultoria · Marketing e vendas",
-    title: "Clareza para decidir onde investir — e onde parar de gastar.",
+    title: "Clareza para decidir onde investir e onde parar de gastar.",
     subtitle:
       "Direcionamento estratégico de marketing e vendas para empresas que querem organizar prioridades, estruturar processos e crescer com foco.",
     whatsappTopic: "diagnostico",
@@ -354,7 +354,7 @@ export const services: Service[] = [
       },
     ],
     ctaTitle: "Quer clareza sobre o próximo passo do seu crescimento?",
-    seoTitle: "Consultoria estratégica de marketing e vendas — Ello",
+    seoTitle: "Consultoria estratégica de marketing e vendas | Ello",
     seoDescription:
       "Consultoria de marketing e vendas para organizar prioridades e crescer com foco. Ello Táticas Digitais, Louveira-SP.",
   },
@@ -365,7 +365,7 @@ export const services: Service[] = [
     eyebrow: "Tecnologia própria · Ello IA",
     title: "Atendimento que não dorme: a Ello IA qualifica, conduz e vende 24/7.",
     subtitle:
-      "CRM com atendimento por inteligência artificial no WhatsApp. A Ello IA qualifica, conduz e vende — e um humano da sua equipe assume quando precisar.",
+      "CRM com atendimento por inteligência artificial no WhatsApp. A Ello IA qualifica, conduz e vende, e um humano da sua equipe assume quando precisar.",
     whatsappTopic: "ia",
     isTech: true,
     includes: [
@@ -387,15 +387,15 @@ export const services: Service[] = [
     faqs: [
       {
         q: "O que é a Ello IA e como ela funciona no WhatsApp?",
-        a: "A Ello IA é a tecnologia própria da Ello: um CRM com atendimento por inteligência artificial no WhatsApp, disponível 24 horas por dia. Ela qualifica o contato, conduz a conversa e pode vender — e um humano da sua equipe assume quando necessário.",
+        a: "A Ello IA é a tecnologia própria da Ello: um CRM com atendimento por inteligência artificial no WhatsApp, disponível 24 horas por dia. Ela qualifica o contato, conduz a conversa e pode vender, e um humano da sua equipe assume quando necessário.",
       },
       {
         q: "Posso contratar a Ello IA junto com um plano?",
-        a: "Sim. A Ello IA está disponível como camada adicional a qualquer plano — Ello Performance, Ello Expansão ou Ello Conexão.",
+        a: "Sim. A Ello IA está disponível como camada adicional a qualquer plano: Ello Performance, Ello Expansão ou Ello Conexão.",
       },
     ],
     ctaTitle: "Quer atender seus leads a qualquer hora?",
-    seoTitle: "Ello IA — atendimento com IA no WhatsApp 24/7",
+    seoTitle: "Ello IA | atendimento com IA no WhatsApp 24/7",
     seoDescription:
       "Ello IA: CRM com atendimento por inteligência artificial no WhatsApp que qualifica, conduz e vende 24/7, com humano assumindo quando precisa.",
   },

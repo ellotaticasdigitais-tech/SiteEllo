@@ -22,10 +22,10 @@ export const Route = createFileRoute("/cases/$slug")({
     return { c };
   },
   head: ({ loaderData, params }) => {
-    if (!loaderData) return pageHead({ title: "Case indisponível — Ello", description: "Página indisponível.", path: `/cases/${params.slug}`, noindex: true });
+    if (!loaderData) return pageHead({ title: "Case indisponível | Ello", description: "Página indisponível.", path: `/cases/${params.slug}`, noindex: true });
     const { c } = loaderData;
     return pageHead({
-      title: `Case ${c.client} — Ello Táticas Digitais`,
+      title: `Case ${c.client} | Ello Táticas Digitais`,
       description: `${c.headline}. ${c.summary}`.slice(0, 158),
       path: `/cases/${c.slug}`,
       type: "article",

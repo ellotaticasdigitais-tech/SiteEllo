@@ -42,7 +42,7 @@ export function VideoCard({ v, dark = false }: { v: Captacao; dark?: boolean }) 
             className="h-full w-full object-cover"
           />
         ) : (
-          <button type="button" onClick={start} className="group absolute inset-0 text-left" aria-label={`Assistir: ${v.title} — ${v.client}`}>
+          <button type="button" onClick={start} className="group absolute inset-0 text-left" aria-label={`Assistir: ${v.title}, ${v.client}`}>
             <img src={videoPoster(v.id)} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <span className="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-transparent" aria-hidden="true" />
             <span className="absolute left-1/2 top-1/2 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-sun text-ink shadow-sun transition-transform group-hover:scale-110">

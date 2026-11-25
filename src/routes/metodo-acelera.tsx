@@ -20,7 +20,7 @@ const routine = [
 export const Route = createFileRoute("/metodo-acelera")({
   head: () =>
     pageHead({
-      title: "Método ACELERA — os 4 pilares de crescimento da Ello",
+      title: "Método ACELERA | os 4 pilares de crescimento da Ello",
       description:
         "Presença digital estruturada, conteúdo e relacionamento, tráfego e crescimento, vendas e atendimento com IA: conheça o método da Ello.",
       path: "/metodo-acelera",
@@ -40,7 +40,7 @@ function MethodPage() {
             Método <span className="text-sun">ACELERA</span>: 4 pilares, uma só estratégia
           </>
         }
-        lead="Ações soltas geram resultados soltos. O Método ACELERA organiza o digital da sua empresa em quatro pilares que se conectam — e viram uma rotina mensal de crescimento."
+        lead="Ações soltas geram resultados soltos. O Método ACELERA organiza o digital da sua empresa em quatro pilares que se conectam e viram uma rotina mensal de crescimento."
         aside={
           <div className="grid grid-cols-2 gap-3">
             {pillars.map((p, i) => (
@@ -97,7 +97,7 @@ function MethodPage() {
             eyebrow="Como isso vira rotina"
             title={
               <>
-                Planejar, criar, conectar e <span className="text-sun">converter</span> — todo mês
+                Planejar, criar, conectar e <span className="text-sun">converter</span>, todo mês
               </>
             }
             lead="Depois do onboarding, o método vira um ciclo contínuo. Cada mês começa com prioridades claras e termina com leitura de negócio, não com relatório de vaidade."

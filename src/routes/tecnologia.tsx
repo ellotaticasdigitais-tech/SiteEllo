@@ -18,9 +18,9 @@ const iaFeatures = [
 export const Route = createFileRoute("/tecnologia")({
   head: () =>
     pageHead({
-      title: "Ello IA e Ello CRM — tecnologia própria da Ello",
+      title: "Ello IA e Ello CRM | tecnologia própria da Ello",
       description:
-        "Ello IA: atendimento por inteligência artificial 24/7 no WhatsApp, já disponível. Ello CRM: CRM próprio em desenvolvimento — cadastre-se para ser avisado.",
+        "Ello IA: atendimento por inteligência artificial 24/7 no WhatsApp, já disponível. Ello CRM: CRM próprio em desenvolvimento: cadastre-se para ser avisado.",
       path: "/tecnologia",
       jsonLd: [breadcrumbLd([{ name: "Início", path: "/" }, { name: "Tecnologia", path: "/tecnologia" }])],
     }),
@@ -32,7 +32,7 @@ function TechPage() {
     <SiteShell>
       <PageHero
         crumbs={[{ label: "Início", to: "/" }, { label: "Tecnologia própria" }]}
-        eyebrow="Diferencial — não é só agência"
+        eyebrow="Diferencial: não é só agência"
         title={
           <>
             Tecnologia <span className="text-sun">própria</span> para vender mais e atender melhor
@@ -49,7 +49,7 @@ function TechPage() {
               <span className="h-2 w-2 rounded-full bg-success" aria-hidden="true" /> já disponível
             </span>
           </div>
-          <SectionHeading className="mt-4" eyebrow="Ello IA" title="CRM com atendimento por IA 24/7 no WhatsApp" lead="Qualifica, conduz e vende — com humano assumindo quando precisar. Disponível como camada adicional a qualquer plano." />
+          <SectionHeading className="mt-4" eyebrow="Ello IA" title="CRM com atendimento por IA 24/7 no WhatsApp" lead="Qualifica, conduz e vende, com humano assumindo quando precisar. Disponível como camada adicional a qualquer plano." />
           <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {iaFeatures.map((f, i) => (
               <Reveal as="li" key={f.title} delay={i * 80} className="rounded-3xl border border-border bg-card p-6 shadow-soft">
@@ -79,7 +79,7 @@ function TechPage() {
               tone="light"
               eyebrow="Ello CRM"
               title="O CRM próprio da Ello está em construção"
-              lead="Com integração a WhatsApp Web, kanban de atendimento e funil comercial. Ainda não há data de lançamento confirmada — deixe seu contato e avisaremos quando houver novidades."
+              lead="Com integração a WhatsApp Web, kanban de atendimento e funil comercial. Ainda não há data de lançamento confirmada. Deixe seu contato e avisaremos quando houver novidades."
             />
             <Reveal delay={160} className="mt-8 flex items-center gap-3 text-sm text-ink-foreground/70">
               <KanbanSquare className="size-5 text-sun" aria-hidden="true" /> Funcionalidades sujeitas a alteração até o lançamento.

@@ -11,7 +11,7 @@ import { absUrl, breadcrumbLd, pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/cases/")({
   head: () =>
     pageHead({
-      title: "Cases e portfólio — Ello Táticas Digitais",
+      title: "Cases e portfólio | Ello Táticas Digitais",
       description:
         "Portfólio da Ello por nicho: varejo e alimentício, alimentício, indústria e construção civil. Veja as peças criadas para cada cliente e o case da própria Ello.",
       path: "/cases",
@@ -21,7 +21,7 @@ export const Route = createFileRoute("/cases/")({
           "@context": "https://schema.org",
           "@type": "ItemList",
           name: "Cases e portfólio da Ello Táticas Digitais",
-          itemListElement: cases.map((c, i) => ({ "@type": "ListItem", position: i + 1, name: `${c.client} — ${c.headline}`, url: absUrl(`/cases/${c.slug}`) })),
+          itemListElement: cases.map((c, i) => ({ "@type": "ListItem", position: i + 1, name: `${c.client}: ${c.headline}`, url: absUrl(`/cases/${c.slug}`) })),
         },
       ],
     }),
@@ -49,7 +49,7 @@ function CasesHub() {
           <SectionHeading
             eyebrow="Captação e edição"
             title={<span id="captacoes">Vídeos que a Ello captou e editou</span>}
-            lead="Roteiro, gravação e edição feitos pelo nosso time. Dê o play — com som."
+            lead="Roteiro, gravação e edição feitos pelo nosso time. Dê o play, com som."
           />
           <div className="mt-12">
             <VideoReel items={captacoes} />

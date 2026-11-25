@@ -8,8 +8,8 @@ import { contatoSchema, diagnosticoSchema, labSchema, MIN_FILL_MS } from "@/lib/
 import { topicForPath, whatsappLink } from "@/lib/whatsapp";
 
 describe("WhatsApp", () => {
-  it("uses the official number (19) 99865-0372", () => {
-    expect(whatsappLink("geral")).toMatch(/^https:\/\/wa\.me\/5519998650372\?text=/);
+  it("uses the Luma SDR WhatsApp (19) 93629-5679", () => {
+    expect(whatsappLink("geral")).toMatch(/^https:\/\/wa\.me\/5519936295679\?text=/);
   });
 
   it("pre-fills a traffic-specific message on the paid traffic page", () => {

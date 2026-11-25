@@ -8,7 +8,7 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/politica-de-cookies")({
   head: () =>
     pageHead({
-      title: "Política de Cookies — Ello Táticas Digitais",
+      title: "Política de Cookies | Ello Táticas Digitais",
       description: "Quais cookies e tecnologias semelhantes o site da Ello utiliza e como gerenciar suas preferências.",
       path: "/politica-de-cookies",
     }),
@@ -32,7 +32,7 @@ function CookiesPage() {
       </section>
       <section className="space-y-3">
         <h2>Como gerenciar</h2>
-        <p>Você pode alterar suas preferências a qualquer momento — também pelo link “Preferências de cookies” no rodapé.</p>
+        <p>Você pode alterar suas preferências a qualquer momento, também pelo link “Preferências de cookies” no rodapé.</p>
         <Button variant="ink" onClick={openCookiePreferences}>
           Abrir preferências de cookies
         </Button>

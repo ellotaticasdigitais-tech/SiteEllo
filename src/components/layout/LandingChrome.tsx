@@ -12,7 +12,7 @@ export function LandingHeader({ crumbs, ctaLabel = "Solicitar orçamento", ctaHr
     <header className="absolute inset-x-0 top-0 z-40 py-4">
       <div className="container-site grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
         <div className="flex min-w-0 items-center gap-6">
-          <Link to="/" aria-label="Ello Táticas Digitais — página inicial" className="shrink-0">
+          <Link to="/" aria-label="Ello Táticas Digitais, página inicial" className="shrink-0">
             <Logo tone="light" />
           </Link>
           <nav aria-label="Você está em" className="hidden min-w-0 md:block">

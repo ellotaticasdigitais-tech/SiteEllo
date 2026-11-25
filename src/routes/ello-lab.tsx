@@ -24,9 +24,9 @@ const steps = [
 export const Route = createFileRoute("/ello-lab")({
   head: () =>
     pageHead({
-      title: "Ello Lab — comunidade e plataforma de conhecimento da Ello",
+      title: "Ello Lab | comunidade e plataforma de conhecimento da Ello",
       description:
-        "Ello Lab: cursos com certificado, mentorias e eventos para empresários. Em desenvolvimento — entre na comunidade e garanta desconto de fundador.",
+        "Ello Lab: cursos com certificado, mentorias e eventos para empresários. Em desenvolvimento: entre na comunidade e garanta desconto de fundador.",
       path: "/ello-lab",
       jsonLd: [breadcrumbLd([{ name: "Início", path: "/" }, { name: "Ello Lab", path: "/ello-lab" }])],
     }),
@@ -44,7 +44,7 @@ function LabPage() {
             O laboratório da Ello está <span className="text-sun">quase pronto</span>
           </>
         }
-        lead="Estamos construindo o Ello Lab: cursos com certificado, mentorias e eventos para empresários que querem alta performance em vendas e marketing. Enquanto isso, tudo acontece na comunidade — e quem chega primeiro ganha desconto de fundador."
+        lead="Estamos construindo o Ello Lab: cursos com certificado, mentorias e eventos para empresários que querem alta performance em vendas e marketing. Enquanto isso, tudo acontece na comunidade, e quem chega primeiro ganha desconto de fundador."
         aside={<LabTeaser className="hidden lg:block" />}
       >
         <div className="flex flex-col gap-4">

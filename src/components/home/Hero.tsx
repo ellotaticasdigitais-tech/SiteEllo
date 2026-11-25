@@ -51,7 +51,7 @@ export function Hero() {
 
           <Reveal delay={280}>
             <p className="lead mt-5 max-w-xl text-ink-foreground/80">
-              Conteúdo, tráfego pago e automação com IA integrados em uma só estratégia — não em posts soltos. A Ello
+              Conteúdo, tráfego pago e automação com IA integrados em uma só estratégia, não em posts soltos. A Ello
               profissionaliza o digital da sua empresa do planejamento à venda.
             </p>
           </Reveal>

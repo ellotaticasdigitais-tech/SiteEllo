@@ -7,7 +7,7 @@ import { pageHead } from "@/lib/seo";
 export const Route = createFileRoute("/politica-de-privacidade")({
   head: () =>
     pageHead({
-      title: "Política de Privacidade — Ello Táticas Digitais",
+      title: "Política de Privacidade | Ello Táticas Digitais",
       description: "Como a Ello Táticas Digitais coleta, usa, armazena e protege dados pessoais, em conformidade com a LGPD.",
       path: "/politica-de-privacidade",
     }),
@@ -22,7 +22,7 @@ function PrivacyPage() {
         <p>
           Esta política descreve como a <strong>{site.name}</strong>
           {site.cnpj ? `, inscrita no CNPJ ${site.cnpj},` : ""} com endereço em {fullAddress}, trata dados pessoais coletados neste site, nos
-          termos da Lei nº 13.709/2018 (Lei Geral de Proteção de Dados — LGPD).
+          termos da Lei nº 13.709/2018 (Lei Geral de Proteção de Dados, LGPD).
         </p>
       </section>
       <section className="space-y-3">

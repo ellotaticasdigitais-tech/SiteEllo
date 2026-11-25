@@ -47,7 +47,7 @@ export function MethodSection() {
           eyebrow="Como trabalhamos"
           title={
             <span id="metodo-titulo">
-              Método <span className="text-sun">ACELERA</span> — 4 pilares, uma só estratégia
+              Método <span className="text-sun">ACELERA</span>: 4 pilares, uma só estratégia
             </span>
           }
         />
@@ -128,7 +128,7 @@ export function DiagnosticSection() {
           </Reveal>
           <Reveal delay={160}>
             <p className="lead mt-5 max-w-lg text-ink/80">
-              Em uma conversa objetiva, olhamos para sua presença digital, conteúdo, tráfego e atendimento — e mostramos onde está a maior
+              Em uma conversa objetiva, olhamos para sua presença digital, conteúdo, tráfego e atendimento, e mostramos onde está a maior
               oportunidade. Sem compromisso.
             </p>
           </Reveal>

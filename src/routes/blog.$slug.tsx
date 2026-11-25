@@ -13,10 +13,10 @@ export const Route = createFileRoute("/blog/$slug")({
     return { post };
   },
   head: ({ loaderData, params }) => {
-    if (!loaderData) return pageHead({ title: "Artigo não encontrado — Ello", description: "Página indisponível.", path: `/blog/${params.slug}`, noindex: true });
+    if (!loaderData) return pageHead({ title: "Artigo não encontrado | Ello", description: "Página indisponível.", path: `/blog/${params.slug}`, noindex: true });
     const { post } = loaderData;
     return pageHead({
-      title: `${post.title} — Blog da Ello`,
+      title: `${post.title} | Blog da Ello`,
       description: post.excerpt,
       path: `/blog/${post.slug}`,
       type: "article",
