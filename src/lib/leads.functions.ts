@@ -1,11 +1,59 @@
 import { createServerFn } from "@tanstack/react-start";
 import { getRequestHeader, getRequestIP } from "@tanstack/react-start/server";
 
+import { site } from "@/data/site";
+
 import { MIN_FILL_MS, formSchemas, leadPayloadSchema } from "./leads.schema";
 
 export type SubmitLeadResult =
   | { ok: true }
   | { ok: false; error: "validation" | "spam" | "rate_limited" | "unavailable"; message: string };
+
+const FORM_LABELS: Record<string, string> = {
+  diagnostico: "Diagnóstico estratégico",
+  ello_lab: "Ello Lab",
+  contato: "Contato",
+  crm_interesse: "Interesse no Ello CRM",
+  servico: "Página de serviço",
+};
+
+/** Envia uma cópia do lead por e-mail (FormSubmit). Nunca derruba o envio se falhar. */
+async function emailLead(row: Record<string, unknown>): Promise<boolean> {
+  const to = site.leadsEmail;
+  if (!to) return false;
+  const label = FORM_LABELS[String(row["form_type"])] ?? String(row["form_type"]);
+  const pick = (k: string) => (row[k] ? String(row[k]) : "");
+  const body = {
+    _subject: `Novo lead no site: ${label} (${pick("name")})`,
+    _template: "table",
+    _captcha: "false",
+    Formulário: label,
+    Nome: pick("name"),
+    "E-mail": pick("email"),
+    WhatsApp: pick("whatsapp"),
+    Empresa: pick("company"),
+    Objetivo: pick("objective"),
+    "Faturamento mensal": pick("revenue_range"),
+    "Serviço de interesse": pick("service_interest"),
+    Mensagem: pick("message"),
+    "Página de envio": pick("source_page"),
+    "Origem da conversão": pick("conversion_origin"),
+    "UTM source / medium / campaign": [pick("utm_source"), pick("utm_medium"), pick("utm_campaign")].filter(Boolean).join(" / "),
+    "Enviado em": new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" }),
+  };
+  try {
+    const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
+      method: "POST",
+      headers: { "content-type": "application/json", accept: "application/json", origin: site.url, referer: `${site.url}/` },
+      body: JSON.stringify(Object.fromEntries(Object.entries(body).filter(([, v]) => v !== ""))),
+    });
+    if (!res.ok) console.error("[leads] e-mail failed", res.status);
+    return res.ok;
+  } catch (e) {
+    console.error("[leads] e-mail failed", e instanceof Error ? e.message : e);
+    return false;
+  }
+}
 
 const RATE_WINDOW_MIN = 10;
 const RATE_MAX = 5;
@@ -54,8 +102,8 @@ export const submitLead = createServerFn({ method: "POST" })
       .eq("ip_hash", ipHash)
       .gte("created_at", since);
     if (countError) {
+      // Sem o banco não dá para limitar envios, mas o lead ainda segue por e-mail.
       console.error("[leads] rate check failed", countError.message);
-      return { ok: false, error: "unavailable", message: "Nosso sistema está indisponível agora. Fale com a gente pelo WhatsApp." };
     }
     if ((count ?? 0) >= RATE_MAX) {
       return { ok: false, error: "rate_limited", message: "Recebemos vários envios seguidos. Aguarde alguns minutos ou chame no WhatsApp." };
@@ -88,9 +136,13 @@ export const submitLead = createServerFn({ method: "POST" })
     };
 
     const { error } = await supabaseAdmin.from("leads").insert(row);
+    // Cópia por e-mail para a equipe. Se o banco falhar mas o e-mail sair, o lead não se perde.
+    const emailed = await emailLead(row);
     if (error) {
       console.error("[leads] insert failed", error.message);
-      return { ok: false, error: "unavailable", message: "Não conseguimos registrar seu envio. Tente de novo ou chame no WhatsApp." };
+      if (!emailed) {
+        return { ok: false, error: "unavailable", message: "Não conseguimos registrar seu envio. Tente de novo ou chame no WhatsApp." };
+      }
     }
 
     // Optional forwarding to an external CRM/automation endpoint.

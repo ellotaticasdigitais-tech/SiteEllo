@@ -49,7 +49,7 @@ function PrivacyPage() {
       </section>
       <section className="space-y-3">
         <h2>5. Compartilhamento</h2>
-        <p>Os dados podem ser processados por fornecedores que nos ajudam a operar o site, armazenar informações e gerenciar o relacionamento comercial (hospedagem, banco de dados, CRM e ferramentas de medição), sempre limitados às finalidades desta política. Não vendemos dados pessoais.</p>
+        <p>Os dados podem ser processados por fornecedores que nos ajudam a operar o site, armazenar informações e gerenciar o relacionamento comercial (hospedagem, banco de dados, envio de notificações por e-mail à nossa equipe, CRM e ferramentas de medição), sempre limitados às finalidades desta política. Não vendemos dados pessoais.</p>
       </section>
       <section className="space-y-3">
         <h2>6. Armazenamento e segurança</h2>

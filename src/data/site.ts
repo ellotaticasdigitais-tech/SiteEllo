@@ -17,6 +17,8 @@ export const site = {
   /** WhatsApp da Luma SDR: todos os botões de WhatsApp do site levam para cá. */
   whatsappNumber: "5519936295679",
   whatsappDisplay: "(19) 93629-5679",
+  /** E-mail que recebe uma cópia de cada formulário enviado no site. */
+  leadsEmail: "lucas@ellotaticasdigitais.com.br",
   /** Google Tag Manager da Ello (envia os dados dos formulários para o RD Station). */
   gtmId: "GTM-P43R2DN",
   /** Grupo da comunidade Ello Lab no WhatsApp. */
