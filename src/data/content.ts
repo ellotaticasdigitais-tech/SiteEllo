@@ -75,4 +75,12 @@ export const clientLogos: { name: string; src?: string; bg?: string; fill?: bool
   { name: "SkyFit Academia", src: "/clientes/skyfit.webp" },
   { name: "Alvorada Supermercados", src: "/clientes/alvorada.webp", bg: "#7A1512", fade: true },
   { name: "MF Cortes e Furos em Concreto", src: "/clientes/mf-furos.webp", bg: "#141313" },
+  { name: "L&V Imóveis", src: "/clientes/lv-imoveis.webp" },
+  { name: "Instituto Patrícia Lacombe", src: "/clientes/patricia-lacombe.webp", bg: "#1A8592" },
+  { name: "Home Invest", src: "/clientes/home-invest.webp" },
+  { name: "Star Soccer", src: "/clientes/star-soccer.webp", bg: "#01518E" },
+  { name: "Marçal Espetinhos & Chopp", src: "/clientes/marcal.webp" },
+  { name: "Vale Verde", src: "/clientes/valeverde.webp", bg: "#83C422" },
+  { name: "SSR Tecnologia", src: "/clientes/ssr-tecnologia.webp" },
+  { name: "Cliente da Ello", src: "/clientes/arvore.webp" },
 ];
