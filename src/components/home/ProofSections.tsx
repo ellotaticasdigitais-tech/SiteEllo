@@ -1,4 +1,4 @@
-import { BadgeCheck, MessageSquareQuote } from "lucide-react";
+import { BadgeCheck, Check, MessageSquareQuote, Sparkles, X } from "lucide-react";
 
 import { Marquee, Reveal, RotatingWord } from "@/components/animations/motion";
 import { SectionHeading } from "@/components/layout/SiteShell";
@@ -86,7 +86,7 @@ export function Positioning() {
             eyebrow="Posicionamento"
             title={
               <span id="posicionamento">
-                A maioria das agências vende “postar bonito”. <span className="text-gradient-brand">A Ello vende sistema.</span>
+                A maioria das agências vende “postar bonito”. <span className="text-gradient-brand">A Ello vende estratégia.</span>
               </span>
             }
             lead="Presença digital profissional + relacionamento estratégico + tráfego qualificado + tecnologia de automação — tudo integrado, nunca ações soltas."
@@ -96,24 +96,36 @@ export function Positioning() {
           </Reveal>
         </div>
         <Reveal variant="right">
-          <div className="overflow-hidden rounded-[2rem] bg-ink-pattern shadow-lift">
-            <table className="w-full text-left text-sm sm:text-base">
-              <caption className="sr-only">Comparação entre agência tradicional e Ello Táticas Digitais</caption>
-              <thead>
-                <tr className="border-b border-ink-foreground/15">
-                  <th scope="col" className="p-5 font-semibold text-ink-muted">Agência tradicional</th>
-                  <th scope="col" className="p-5 font-display text-lg font-bold text-sun">Ello Táticas Digitais</th>
-                </tr>
-              </thead>
-              <tbody>
+          <div className="grid grid-cols-[0.92fr_1.08fr] items-center gap-3 sm:gap-4">
+            {/* Agência tradicional: lilás, apagado de propósito */}
+            <div className="rounded-[1.75rem] bg-[color-mix(in_oklab,var(--violet)_12%,white)] p-4 sm:p-6">
+              <h3 className="text-sm font-semibold text-violet/80 sm:text-base">Agência tradicional</h3>
+              <ul className="mt-4 space-y-3 sm:space-y-4">
                 {comparison.map((row) => (
-                  <tr key={row.ello} className="group border-b border-ink-foreground/10 last:border-0 transition-colors hover:bg-ink-foreground/5">
-                    <td className="p-5 text-ink-muted line-through decoration-ink-muted/40">{row.traditional}</td>
-                    <td className="p-5 font-semibold text-ink-foreground transition-transform group-hover:translate-x-1">{row.ello}</td>
-                  </tr>
+                  <li key={row.traditional} className="flex items-start gap-2 text-sm text-violet/70 sm:text-base">
+                    <X className="mt-0.5 size-4 shrink-0 text-violet/50" aria-hidden="true" />
+                    <span className="line-through decoration-violet/30">{row.traditional}</span>
+                  </li>
                 ))}
-              </tbody>
-            </table>
+              </ul>
+            </div>
+
+            {/* Ello: roxo com amarelo e brilho suave */}
+            <div className="ello-shine overflow-hidden rounded-[1.75rem] bg-ink-pattern p-4 sm:p-7 lg:-my-6">
+              <h3 className="flex items-center gap-2 font-display text-base font-extrabold text-sun sm:text-xl">
+                <Sparkles className="size-4 shrink-0 sm:size-5" aria-hidden="true" /> Ello Táticas Digitais
+              </h3>
+              <ul className="mt-4 space-y-3 sm:space-y-4">
+                {comparison.map((row) => (
+                  <li key={row.ello} className="flex items-start gap-2 font-display text-sm font-bold text-sun sm:gap-3 sm:text-lg">
+                    <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-sun text-ink sm:size-6">
+                      <Check className="size-3 sm:size-3.5" strokeWidth={3} aria-hidden="true" />
+                    </span>
+                    {row.ello}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </Reveal>
       </div>

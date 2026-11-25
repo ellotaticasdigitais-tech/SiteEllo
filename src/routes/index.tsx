@@ -17,7 +17,7 @@ export const Route = createFileRoute("/")({
     pageHead({
       title: "Ello Táticas Digitais | Agência de marketing em Louveira-SP",
       description:
-        "Estratégia, branding, conteúdo, tráfego pago e automação com IA como um sistema só. Agência de crescimento digital em Louveira-SP que atende todo o Brasil.",
+        "Branding, conteúdo, tráfego pago e automação com IA integrados em uma só estratégia. Agência de crescimento digital em Louveira-SP que atende todo o Brasil.",
       path: "/",
       jsonLd: [organizationLd, websiteLd, professionalServiceLd, breadcrumbLd([{ name: "Início", path: "/" }])],
     }),

@@ -43,7 +43,7 @@ export function FaqSection({ items, title = "Dúvidas comuns sobre contratar a E
 }
 
 export function FinalCta({
-  title = "Pronto para o seu digital virar sistema?",
+  title = "Pronto para o seu digital virar estratégia?",
   text = "Fale com a Ello e receba um diagnóstico sem compromisso.",
   topic = "diagnostico",
   formHref = "/contato",

@@ -30,7 +30,7 @@ function ServicesHub() {
             Assessoria <span className="text-sun">360°</span> no digital
           </>
         }
-        lead="Oito frentes que funcionam como um sistema: da definição da marca ao atendimento com IA. Escolha por onde começar — ou deixe o diagnóstico indicar."
+        lead="Oito frentes integradas em uma só estratégia: da definição da marca ao atendimento com IA. Escolha por onde começar — ou deixe o diagnóstico indicar."
       />
       <section className="section-y bg-paper">
         <div className="container-site">

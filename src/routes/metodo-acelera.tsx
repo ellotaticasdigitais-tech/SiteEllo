@@ -37,7 +37,7 @@ function MethodPage() {
         eyebrow="Como trabalhamos"
         title={
           <>
-            Método <span className="text-sun">ACELERA</span>: 4 pilares, um sistema só
+            Método <span className="text-sun">ACELERA</span>: 4 pilares, uma só estratégia
           </>
         }
         lead="Ações soltas geram resultados soltos. O Método ACELERA organiza o digital da sua empresa em quatro pilares que se conectam — e viram uma rotina mensal de crescimento."
@@ -129,7 +129,7 @@ function MethodPage() {
         items={[
           {
             q: "O que é o Método ACELERA?",
-            a: "É o método de trabalho da Ello, organizado em quatro pilares integrados: Presença Digital Estruturada, Conteúdo e Relacionamento, Tráfego e Crescimento, e Vendas e Atendimento com IA. Eles funcionam como um sistema único, em vez de ações isoladas.",
+            a: "É o método de trabalho da Ello, organizado em quatro pilares integrados: Presença Digital Estruturada, Conteúdo e Relacionamento, Tráfego e Crescimento, e Vendas e Atendimento com IA. Eles funcionam como uma estratégia única, em vez de ações isoladas.",
           },
           {
             q: "Preciso contratar os quatro pilares de uma vez?",

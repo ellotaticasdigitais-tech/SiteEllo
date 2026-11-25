@@ -47,7 +47,7 @@ export function MethodSection() {
           eyebrow="Como trabalhamos"
           title={
             <span id="metodo-titulo">
-              Método <span className="text-sun">ACELERA</span> — 4 pilares, um sistema só
+              Método <span className="text-sun">ACELERA</span> — 4 pilares, uma só estratégia
             </span>
           }
         />

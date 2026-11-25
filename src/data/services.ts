@@ -251,7 +251,7 @@ export const services: Service[] = [
     ],
     problem: {
       title: "Campanha sem estratégia custa mais do que parece",
-      text: "Verba disputando entre vários objetivos ao mesmo tempo é o erro mais caro — e o mais comum — em gestão de tráfego sem um sistema por trás.",
+      text: "Verba disputando entre vários objetivos ao mesmo tempo é o erro mais caro — e o mais comum — em gestão de tráfego sem uma estratégia por trás.",
     },
     differentials: [
       { title: "+R$500 mil geridos", text: "Experiência prática em escalar campanhas com foco em resultado." },
@@ -340,7 +340,7 @@ export const services: Service[] = [
     differentials: [
       { title: "Visão 360°", text: "Branding, conteúdo, performance e automação no mesmo olhar." },
       { title: "Lado a lado", text: "A Ello senta junto, não fala só por e-mail." },
-      { title: "Baseada no Método ACELERA", text: "Um sistema claro para organizar o crescimento." },
+      { title: "Baseada no Método ACELERA", text: "Um caminho estratégico claro para organizar o crescimento." },
     ],
     steps: defaultSteps,
     faqs: [

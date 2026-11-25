@@ -458,6 +458,46 @@
   animation-play-state: paused;
 }
 
+/* Cartão da Ello na comparação: brilho suave e limpo */
+.ello-shine {
+  position: relative;
+  isolation: isolate;
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--sun) 45%, transparent),
+    0 24px 60px -20px color-mix(in oklab, var(--sun) 45%, transparent),
+    0 30px 70px -30px color-mix(in oklab, var(--ink) 70%, transparent);
+  animation: ello-glow 4s ease-in-out infinite;
+}
+.ello-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 35%, color-mix(in oklab, var(--sun) 18%, transparent) 50%, transparent 65%);
+  background-size: 250% 100%;
+  animation: ello-sweep 5s ease-in-out infinite;
+}
+@keyframes ello-sweep {
+  0% { background-position: 150% 0; }
+  60%, 100% { background-position: -50% 0; }
+}
+@keyframes ello-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--sun) 40%, transparent),
+      0 24px 60px -24px color-mix(in oklab, var(--sun) 35%, transparent),
+      0 30px 70px -30px color-mix(in oklab, var(--ink) 70%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--sun) 70%, transparent),
+      0 24px 70px -18px color-mix(in oklab, var(--sun) 55%, transparent),
+      0 30px 70px -30px color-mix(in oklab, var(--ink) 70%, transparent);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
