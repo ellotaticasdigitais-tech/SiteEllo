@@ -93,14 +93,25 @@ export const submitLead = createServerFn({ method: "POST" })
     const ipHash = await sha256(`ello:${ip}`);
     const userAgent = (getRequestHeader("user-agent") || "").slice(0, 300);
 
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    // Banco de dados: se as chaves não estiverem configuradas (ex.: rodando no computador),
+    // o lead não é salvo no banco, mas ainda segue por e-mail.
+    let supabaseAdmin: Awaited<typeof import("@/integrations/supabase/client.server")>["supabaseAdmin"] | null = null;
+    try {
+      ({ supabaseAdmin } = await import("@/integrations/supabase/client.server"));
+    } catch (e) {
+      console.error("[leads] banco indisponível:", e instanceof Error ? e.message : e);
+    }
 
     const since = new Date(Date.now() - RATE_WINDOW_MIN * 60_000).toISOString();
-    const { count, error: countError } = await supabaseAdmin
-      .from("leads")
-      .select("id", { count: "exact", head: true })
-      .eq("ip_hash", ipHash)
-      .gte("created_at", since);
+    let count: number | null = 0;
+    let countError: { message: string } | null = null;
+    try {
+      if (!supabaseAdmin) throw new Error("sem banco");
+      ({ count, error: countError } = await supabaseAdmin.from("leads").select("id", { count: "exact", head: true }).eq("ip_hash", ipHash).gte("created_at", since));
+    } catch (e) {
+      supabaseAdmin = null;
+      countError = { message: e instanceof Error ? e.message : "sem banco" };
+    }
     if (countError) {
       // Sem o banco não dá para limitar envios, mas o lead ainda segue por e-mail.
       console.error("[leads] rate check failed", countError.message);
@@ -135,7 +146,14 @@ export const submitLead = createServerFn({ method: "POST" })
       user_agent: userAgent,
     };
 
-    const { error } = await supabaseAdmin.from("leads").insert(row);
+    let error: { message: string } | null = { message: "sem banco" };
+    if (supabaseAdmin) {
+      try {
+        ({ error } = await supabaseAdmin.from("leads").insert(row));
+      } catch (e) {
+        error = { message: e instanceof Error ? e.message : "falha no banco" };
+      }
+    }
     // Cópia por e-mail para a equipe. Se o banco falhar mas o e-mail sair, o lead não se perde.
     const emailed = await emailLead(row);
     if (error) {
