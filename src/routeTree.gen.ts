@@ -12,7 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as ElloLabRouteImport } from './routes/ello-lab'
+import { Route as FeedRouteImport } from './routes/feed'
 import { Route as MetodoAceleraRouteImport } from './routes/metodo-acelera'
+import { Route as ObrigadoRouteImport } from './routes/obrigado'
 import { Route as PlanosRouteImport } from './routes/planos'
 import { Route as PoliticaDeCookiesRouteImport } from './routes/politica-de-cookies'
 import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
@@ -20,12 +22,15 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as TecnologiaRouteImport } from './routes/tecnologia'
 import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
+import { Route as AuthorSplatRouteImport } from './routes/author.$'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as CasesIndexRouteImport } from './routes/cases.index'
 import { Route as CasesSlugRouteImport } from './routes/cases.$slug'
+import { Route as CategorySplatRouteImport } from './routes/category.$'
 import { Route as ServicosIndexRouteImport } from './routes/servicos.index'
 import { Route as ServicosSlugRouteImport } from './routes/servicos.$slug'
+import { Route as TagSplatRouteImport } from './routes/tag.$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -42,9 +47,19 @@ const ElloLabRoute = ElloLabRouteImport.update({
   path: '/ello-lab',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FeedRoute = FeedRouteImport.update({
+  id: '/feed',
+  path: '/feed',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MetodoAceleraRoute = MetodoAceleraRouteImport.update({
   id: '/metodo-acelera',
   path: '/metodo-acelera',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ObrigadoRoute = ObrigadoRouteImport.update({
+  id: '/obrigado',
+  path: '/obrigado',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PlanosRoute = PlanosRouteImport.update({
@@ -82,6 +97,11 @@ const TermosDeUsoRoute = TermosDeUsoRouteImport.update({
   path: '/termos-de-uso',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthorSplatRoute = AuthorSplatRouteImport.update({
+  id: '/author/$',
+  path: '/author/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
   path: '/blog/',
@@ -102,6 +122,11 @@ const CasesSlugRoute = CasesSlugRouteImport.update({
   path: '/cases/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CategorySplatRoute = CategorySplatRouteImport.update({
+  id: '/category/$',
+  path: '/category/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicosIndexRoute = ServicosIndexRouteImport.update({
   id: '/servicos/',
   path: '/servicos/',
@@ -112,12 +137,19 @@ const ServicosSlugRoute = ServicosSlugRouteImport.update({
   path: '/servicos/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TagSplatRoute = TagSplatRouteImport.update({
+  id: '/tag/$',
+  path: '/tag/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
   '/ello-lab': typeof ElloLabRoute
+  '/feed': typeof FeedRoute
   '/metodo-acelera': typeof MetodoAceleraRoute
+  '/obrigado': typeof ObrigadoRoute
   '/planos': typeof PlanosRoute
   '/politica-de-cookies': typeof PoliticaDeCookiesRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
@@ -125,9 +157,12 @@ export interface FileRoutesByFullPath {
   '/sobre': typeof SobreRoute
   '/tecnologia': typeof TecnologiaRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
+  '/author/$': typeof AuthorSplatRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/cases/$slug': typeof CasesSlugRoute
+  '/category/$': typeof CategorySplatRoute
   '/servicos/$slug': typeof ServicosSlugRoute
+  '/tag/$': typeof TagSplatRoute
   '/blog/': typeof BlogIndexRoute
   '/cases/': typeof CasesIndexRoute
   '/servicos/': typeof ServicosIndexRoute
@@ -136,7 +171,9 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
   '/ello-lab': typeof ElloLabRoute
+  '/feed': typeof FeedRoute
   '/metodo-acelera': typeof MetodoAceleraRoute
+  '/obrigado': typeof ObrigadoRoute
   '/planos': typeof PlanosRoute
   '/politica-de-cookies': typeof PoliticaDeCookiesRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
@@ -144,9 +181,12 @@ export interface FileRoutesByTo {
   '/sobre': typeof SobreRoute
   '/tecnologia': typeof TecnologiaRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
+  '/author/$': typeof AuthorSplatRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/cases/$slug': typeof CasesSlugRoute
+  '/category/$': typeof CategorySplatRoute
   '/servicos/$slug': typeof ServicosSlugRoute
+  '/tag/$': typeof TagSplatRoute
   '/blog': typeof BlogIndexRoute
   '/cases': typeof CasesIndexRoute
   '/servicos': typeof ServicosIndexRoute
@@ -156,7 +196,9 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
   '/ello-lab': typeof ElloLabRoute
+  '/feed': typeof FeedRoute
   '/metodo-acelera': typeof MetodoAceleraRoute
+  '/obrigado': typeof ObrigadoRoute
   '/planos': typeof PlanosRoute
   '/politica-de-cookies': typeof PoliticaDeCookiesRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
@@ -164,9 +206,12 @@ export interface FileRoutesById {
   '/sobre': typeof SobreRoute
   '/tecnologia': typeof TecnologiaRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
+  '/author/$': typeof AuthorSplatRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/cases/$slug': typeof CasesSlugRoute
+  '/category/$': typeof CategorySplatRoute
   '/servicos/$slug': typeof ServicosSlugRoute
+  '/tag/$': typeof TagSplatRoute
   '/blog/': typeof BlogIndexRoute
   '/cases/': typeof CasesIndexRoute
   '/servicos/': typeof ServicosIndexRoute
@@ -177,7 +222,9 @@ export interface FileRouteTypes {
     | '/'
     | '/contato'
     | '/ello-lab'
+    | '/feed'
     | '/metodo-acelera'
+    | '/obrigado'
     | '/planos'
     | '/politica-de-cookies'
     | '/politica-de-privacidade'
@@ -185,9 +232,12 @@ export interface FileRouteTypes {
     | '/sobre'
     | '/tecnologia'
     | '/termos-de-uso'
+    | '/author/$'
     | '/blog/$slug'
     | '/cases/$slug'
+    | '/category/$'
     | '/servicos/$slug'
+    | '/tag/$'
     | '/blog/'
     | '/cases/'
     | '/servicos/'
@@ -196,7 +246,9 @@ export interface FileRouteTypes {
     | '/'
     | '/contato'
     | '/ello-lab'
+    | '/feed'
     | '/metodo-acelera'
+    | '/obrigado'
     | '/planos'
     | '/politica-de-cookies'
     | '/politica-de-privacidade'
@@ -204,9 +256,12 @@ export interface FileRouteTypes {
     | '/sobre'
     | '/tecnologia'
     | '/termos-de-uso'
+    | '/author/$'
     | '/blog/$slug'
     | '/cases/$slug'
+    | '/category/$'
     | '/servicos/$slug'
+    | '/tag/$'
     | '/blog'
     | '/cases'
     | '/servicos'
@@ -215,7 +270,9 @@ export interface FileRouteTypes {
     | '/'
     | '/contato'
     | '/ello-lab'
+    | '/feed'
     | '/metodo-acelera'
+    | '/obrigado'
     | '/planos'
     | '/politica-de-cookies'
     | '/politica-de-privacidade'
@@ -223,9 +280,12 @@ export interface FileRouteTypes {
     | '/sobre'
     | '/tecnologia'
     | '/termos-de-uso'
+    | '/author/$'
     | '/blog/$slug'
     | '/cases/$slug'
+    | '/category/$'
     | '/servicos/$slug'
+    | '/tag/$'
     | '/blog/'
     | '/cases/'
     | '/servicos/'
@@ -235,7 +295,9 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContatoRoute: typeof ContatoRoute
   ElloLabRoute: typeof ElloLabRoute
+  FeedRoute: typeof FeedRoute
   MetodoAceleraRoute: typeof MetodoAceleraRoute
+  ObrigadoRoute: typeof ObrigadoRoute
   PlanosRoute: typeof PlanosRoute
   PoliticaDeCookiesRoute: typeof PoliticaDeCookiesRoute
   PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
@@ -243,9 +305,12 @@ export interface RootRouteChildren {
   SobreRoute: typeof SobreRoute
   TecnologiaRoute: typeof TecnologiaRoute
   TermosDeUsoRoute: typeof TermosDeUsoRoute
+  AuthorSplatRoute: typeof AuthorSplatRoute
   BlogSlugRoute: typeof BlogSlugRoute
   CasesSlugRoute: typeof CasesSlugRoute
+  CategorySplatRoute: typeof CategorySplatRoute
   ServicosSlugRoute: typeof ServicosSlugRoute
+  TagSplatRoute: typeof TagSplatRoute
   BlogIndexRoute: typeof BlogIndexRoute
   CasesIndexRoute: typeof CasesIndexRoute
   ServicosIndexRoute: typeof ServicosIndexRoute
@@ -274,11 +339,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ElloLabRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/feed': {
+      id: '/feed'
+      path: '/feed'
+      fullPath: '/feed'
+      preLoaderRoute: typeof FeedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/metodo-acelera': {
       id: '/metodo-acelera'
       path: '/metodo-acelera'
       fullPath: '/metodo-acelera'
       preLoaderRoute: typeof MetodoAceleraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/obrigado': {
+      id: '/obrigado'
+      path: '/obrigado'
+      fullPath: '/obrigado'
+      preLoaderRoute: typeof ObrigadoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/planos': {
@@ -330,6 +409,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermosDeUsoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/author/$': {
+      id: '/author/$'
+      path: '/author/$'
+      fullPath: '/author/$'
+      preLoaderRoute: typeof AuthorSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/': {
       id: '/blog/'
       path: '/blog'
@@ -358,6 +444,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CasesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/category/$': {
+      id: '/category/$'
+      path: '/category/$'
+      fullPath: '/category/$'
+      preLoaderRoute: typeof CategorySplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/servicos/': {
       id: '/servicos/'
       path: '/servicos'
@@ -372,6 +465,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicosSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tag/$': {
+      id: '/tag/$'
+      path: '/tag/$'
+      fullPath: '/tag/$'
+      preLoaderRoute: typeof TagSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -379,7 +479,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContatoRoute: ContatoRoute,
   ElloLabRoute: ElloLabRoute,
+  FeedRoute: FeedRoute,
   MetodoAceleraRoute: MetodoAceleraRoute,
+  ObrigadoRoute: ObrigadoRoute,
   PlanosRoute: PlanosRoute,
   PoliticaDeCookiesRoute: PoliticaDeCookiesRoute,
   PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
@@ -387,9 +489,12 @@ const rootRouteChildren: RootRouteChildren = {
   SobreRoute: SobreRoute,
   TecnologiaRoute: TecnologiaRoute,
   TermosDeUsoRoute: TermosDeUsoRoute,
+  AuthorSplatRoute: AuthorSplatRoute,
   BlogSlugRoute: BlogSlugRoute,
   CasesSlugRoute: CasesSlugRoute,
+  CategorySplatRoute: CategorySplatRoute,
   ServicosSlugRoute: ServicosSlugRoute,
+  TagSplatRoute: TagSplatRoute,
   BlogIndexRoute: BlogIndexRoute,
   CasesIndexRoute: CasesIndexRoute,
   ServicosIndexRoute: ServicosIndexRoute,
